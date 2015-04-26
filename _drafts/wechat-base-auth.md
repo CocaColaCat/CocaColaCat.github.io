@@ -78,7 +78,7 @@ OAuth2 的答案是这样的：
 
 以下是客户端的代码。假设用户请求项目列表 （需要授权），run block 会被触发，检测本地是否有授权令牌。
 
- ```js
+ ```javascript
 angular.module('app',[])
 .config([, function(){
 
@@ -133,7 +133,7 @@ https://open.weixin.qq.com/connect/oauth2/authorize?appid=YOUR_APP_ID&redirect_u
 
 以下是 WechatAuthCtrl 的处理代码：
 
-```js
+```javascript
 angular.module('app.account')
 .controller('WechatAuthCtrl', ['$scope', '$location','AuthService', 'Account', 'AuthToken', 'jwtHelper',
   function($scope, $location, AuthService, Account, AuthToken, jwtHelper) {
@@ -178,7 +178,7 @@ angular.module('app.account')
 
 以下是 AuthToken.get_wechat_token 的处理代码。 angular 想后台发异步请求，返回 promise。
 
-```js
+```javascript
 angular.module('app.resource')
 .factory('AuthToken', ['BaseResource', '$http', 'API_ENDPOINT', '$q', function (BaseResource, $http, API_ENDPOINT, $q) {
     var AuthToken =  BaseResource("auth_token");
@@ -276,6 +276,15 @@ end
 ```
 
 
+{% highlight ruby %}
+def show
+  @widget = Widget(params[:id])
+  respond_to do |format|
+    format.html # show.html.erb
+    format.json { render json: @widget }
+  end
+end
+{% endhighlight %}
 
 
 
