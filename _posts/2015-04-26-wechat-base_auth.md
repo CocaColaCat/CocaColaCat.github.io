@@ -1,5 +1,6 @@
 ---
 title: 如何调用微信基础授权实现无登录交互
+layout: default
 ---
 #### TL;DR
 

@@ -1,5 +1,6 @@
 ---
 title: Rails App 性能优化实战篇 - 1 （初级）
+layout: default
 ---
 ### Rails App 性能优化实战篇 - 1 （初级）
 
