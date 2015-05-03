@@ -1,7 +1,13 @@
 ---
 title: 如何调用微信基础授权实现无登录交互
-layout: default
+layout: post
 ---
+
+{{ page.title }}
+================
+
+<p class="meta">26 Apr 2015 - GZ</p> 
+
 #### TL;DR
 
 #### 需求

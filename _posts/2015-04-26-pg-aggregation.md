@@ -1,20 +1,20 @@
 ---
 title: Rails App 性能优化实战篇 - 1 （初级）
-layout: default
+layout: post
 ---
-### Rails App 性能优化实战篇 - 1 （初级）
 
-#### TL,DR
+{{ page.title }}
+================
+
+<p class="meta">26 Apr 2015 - GZ</p> 
+
+**TL,DR**
  
  本文简述了 Rails App 开发中会用到的性能优化技巧。包括了:
  
-- 通过编写 PostgreSQL aggregation sql 来提取时间有关的统计数据; （Covered）
-- 使用 eager loading 来消除 n+1 问题；(TBC)
-- 设置 index 来提升 query 效率。(TBC)
+- 通过编写 PostgreSQL aggregation sql 来提取时间有关的统计数据
 
-**以上都属于基础优化，不适合资深开发员。**
-
-#### 按 日/周/月 提取统计数据
+**按 日/周/月 提取统计数据**
  
  **问题**：无论是应用开发人员还是运维人员，都会面对提取统计数据的需求。比如：
  
@@ -143,5 +143,5 @@ SQL
 
 一旦生成了需要的日期单表，再使用 JOIN，就能轻易达到提取的目的。
 
-**FIRST PART END**
+(完)
  

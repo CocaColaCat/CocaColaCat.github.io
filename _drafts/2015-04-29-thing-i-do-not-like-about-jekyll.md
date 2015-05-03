@@ -1,7 +1,12 @@
 ---
 title: Jekyll 吐槽 － 配置 syntax highlight  
-layout: default
+layout: post
 ---
+
+{{ page.title }}
+================
+
+<p class="meta">29 Apr 2015 - GZ</p>
 
 都说 Jekyll 大法好，我满怀激情的去尝试，短暂的蜜月期后没想却是漫长的失望期。
 
