@@ -5,7 +5,9 @@ layout: post
 {{ page.title }}
 ================
 
-**TL,DR;**
+<p class="meta">06 May 2015 - GZ</p> 
+
+**Brief**
 
 本文记录了如何一步一步的配置 AngularJS 的 [unit](https://docs.angularjs.org/guide/unit-testing) 和 [e2e](https://docs.angularjs.org/guide/e2e-testing) 测试环境。AngularJS 的测试会用到 [protractor](https://angular.github.io/protractor/#/), [karma](https://karma-runner.github.io/0.12/index.html), [Jasmine](http://jasmine.github.io/), [PhantomJS](http://phantomjs.org/), [ghost driver](https://github.com/detro/ghostdriver), [Selenium](http://www.seleniumhq.org/) 等库。文中会简要的描述它们之间的关系。希望读者可以参考本文顺利搭建测试环境，少走弯路。
 
@@ -80,9 +82,94 @@ module.exports = function(config){
 $ karma start path_to_your_karma_conf_file/karma.conf.js
 ```
 
+** 搭建 e2e 测试环境 **
+
+首先引入相关的库。
+
+{% highlight js %}
+{
+  "name": "MMT",
+  "version": "0.0.0",
+  "devDependencies": {
+    "gulp-protractor": "^1.0.0",
+    "protractor": "^2.0.0",
+    "phantomjs":"1.9.16"
+    }
+}
+{% endhighlight %}
+
+npm install。Protractor 需要链接到 Selenium server 才能运行测试，Selenium server 的运行模式有 三种，
+
+- standalone (独立运行，然后通过配置 port 来连通 Protractor 和 Selenium)，
+- 让 Protractor 启动 Selenium server
+- 链接到远程的 Selenium server
+
+本文关注第二种方法的配置。Selenium 是一个 Java 程序，所以系统需要安装有 Java，以下是在 Mac 上安装的[步骤](https://www.java.com/en/download/help/index_installing.xml)。然后需要下载 seleniumServerJar 文件，这可以通过 protractor 的命令行工具下载。
+
+```
+$ ./node_modules/protractor/bin/webdriver-manager update
+``` 
+
+以下是配置文件 protractor.conf.js， 放在测试文件夹下面。
+
+{% highlight js %}
+exports.config = {
+  // 存放 seleniumServerJar 的路径
+  seleniumServerJar: '../../node_modules/protractor/selenium/
+    selenium-server-standalone-2.45.0.jar',
+
+  // 运行 Selenium server 的端口
+  seleniumPort: 4444,
+
+  // 测试代码
+  specs: [ 'e2e/test.js'],
+
+  // 测试使用的浏览器，这里使用 headless phantomjs
+  capabilities: {
+    'browserName': 'phantomjs',
+
+    // phantomjs 的路径
+    'phantomjs.binary.path': './node_modules/phantomjs/bin/phantomjs',
+
+    // 8910 是 ghost driver 的 端口号
+    'phantomjs.cli.args': ['--debug=true', '--webdriver=8910', 
+      '--webdriver-logfile=webdriver.log', '--webdriver-loglevel=DEBUG']
+  },
+
+  // 测试访问的路由
+  baseUrl: 'http://0.0.0.0/',
+
+  framework: 'jasmine',
+
+  jasmineNodeOpts: {
+    isVerbose: true,
+    showColors: true,
+    includeStackTrace: true,
+  },
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: 30000
+  }
+};
+
+{% endhighlight %}
+
+这样 e2e 测试的环境就算配置好了。本文就不给出测试例子，请参考官网[例子](这样单元测试的环境就算配置好了。本文就不给出测试例子，请参考 AngularJS 的官网[例子](https://docs.angularjs.org/guide/unit-testing)。 最后运行测试
+
+```
+$ ./node_modules/protractor/bin/protractor ./mobile/tests/protractor.conf
+```
+
+** 待完成 **
+
+以上教程待改进的地方包括：
+
+- 利用 gulp 来定义测试指令，简化测试执行命令
+- 修复一些配置的 bug 
 
 **延伸阅读**
 
 - [Protractor 入门的 slides, 很棒](http://ramonvictor.github.io/protractor/slides/#/1)
 - [offical docs, 全面](https://github.com/angular/protractor/tree/master/docs)
 - [Selenium WebDriver 原理的介绍](http://www.aosabook.org/en/selenium.html)
+
+（完)
