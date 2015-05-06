@@ -1,26 +1,88 @@
 ---
-title: AngularJS testing
+title: 一步一步教你配置 AngularJS 测试环境
+layout: post
 ---
+{{ page.title }}
+================
 
 **TL,DR;**
 
-本文记录了如何一步一步的配置 AngularJS 的 unit 和 [e2e](https://docs.angularjs.org/guide/e2e-testing) 测试环境。AngularJS 的测试会用到 [protractor](https://angular.github.io/protractor/#/), [karma](https://karma-runner.github.io/0.12/index.html), jasmine, PhantomJS, ghost driver, selenium 等库。文中会简要的描述它们之间的关系。希望读者可以参考本文顺利搭建测试环境，少走弯路。
+本文记录了如何一步一步的配置 AngularJS 的 [unit](https://docs.angularjs.org/guide/unit-testing) 和 [e2e](https://docs.angularjs.org/guide/e2e-testing) 测试环境。AngularJS 的测试会用到 [protractor](https://angular.github.io/protractor/#/), [karma](https://karma-runner.github.io/0.12/index.html), [Jasmine](http://jasmine.github.io/), [PhantomJS](http://phantomjs.org/), [ghost driver](https://github.com/detro/ghostdriver), [Selenium](http://www.seleniumhq.org/) 等库。文中会简要的描述它们之间的关系。希望读者可以参考本文顺利搭建测试环境，少走弯路。
 
 ** 原理 **
+
 服务器端的测试会有框架自带的轻量级 server，那么前端的代码如何自动化测试呢？这就需要一个浏览器。前端测试可以运行在主流的浏览器中，如 chrome，ie，firefox 等。还能运行在 headless browser PhantomJS 中。headless 也就是指没有图形界面的，可以用在 vanilla 的测试服务器中。但由于 headless 仅是模拟真实的浏览器，也就意味着它不能验证真实的运行环境，失去了一定的可信度。
 
-有了浏览器不代表测试会自动的跑起来，还需要 browser driver，比如 chrome 的 chrome drive，PhantomJS 的 ghost driver。除了 driver，还需要有调用它们的组件和测试代码。这里起到链接器的组建就是 selenium 了（文主第一次接触 selenium 的时候，感觉它好强大，也对那些坚持自动化测试的人尊敬不已）。
+有了浏览器不代表测试会自动的跑起来，还需要 browser driver，比如 chrome 的 chrome drive，PhantomJS 的 ghost driver。除了 driver，还需要有调用它们的组件和测试代码。这里起到链接器的组建就是 Selenium 了（文主第一次接触 Selenium 的时候，感觉它好强大，也对那些坚持自动化测试的人尊敬不已）。
 
+以下是 unit 和 e2e 测试的简图。Selenium Server 定义了一套 OOP API，所以任何理解这套 API 的 client 都可以发送测试指令给 Selenium，然后 Selenium 再调动目标浏览器运行测试代码。它强大之处在于 Selenium Server 运行在 A， 可以接收从 B 发来的测试指令，然后 Selenium Server 调用 C 处的浏览器来运行测试。
 
-那到底程序员编写好的测试代码是如何被运行起来的呢？
+![Karma 测试]({{ site.url }}/assets/images/karma_test_diagram.png)
+
+![Protractor 测试]({{ site.url }}/assets/images/protractor_test_diagram.png)
 
 ** 搭建 unit 测试环境 **
 
+首先是安装 karam 相关的库。假定你使用 npm 做包管理，那么把以下的 dependencies 添加到 package.json 里面。
+
+{% highlight js %}
+{
+  "name": "MMT",
+  "version": "0.0.0",
+  "devDependencies": {
+    "gulp-karma": "0.0.4",
+    "karma": "~0.10",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-jasmine": "^0.1.5"
+    }
+}
+{% endhighlight %}
+
+然后运行，后一条指令是按照 karam 的 cli，这样就可以直接调用 karma 而不需要路径。
+
+```
+$ npm install
+$ npm install -g karma-cli
+```
+
+接着是配置 karma。官网的解释很好，[点击查看](http://karma-runner.github.io/0.12/intro/configuration.html)。下面是文主用的配置文件 karma.conf.js，放在测试文件夹下面。这个配置仅包含最基础的设置，详情查看[官网](http://karma-runner.github.io/0.12/config/configuration-file.html)。
+
+{% highlight js %}
+module.exports = function(config){
+  config.set({
+    autoWatch : true, //自动监测文件变化
+    frameworks: ['jasmine'], // 使用 jasmine 做测试框架
+    browsers : ['PhantomJS'], // 使用 PhantomJS 做测试浏览器，还可以是 Chrome
+    port: 8080,
+    // 加载测试脚本和相关的库
+    files: [
+      // mock 需要的库
+      '../src/lib/angular/angular.js',
+      '../src/lib/angular-mocks/angular-mocks.js',
+      
+      // 不要加载的文件
+      '../src/lib/**/!(gulpfile|ngAnimateMock|ngMock|ngMockE2E).js',
+
+      // app 
+      '../src/app/app.js',
+      '../src/app/**/*.js',
+
+      // 测试代码
+      'unit/**/*.js',
+    ]
+  });
+};
+{% endhighlight %}
+
+这样单元测试的环境就算配置好了。本文就不给出测试例子，请参考 AngularJS 的官网[例子](https://docs.angularjs.org/guide/unit-testing)。最后运行测试
+
+```
+$ karma start path_to_your_karma_conf_file/karma.conf.js
+```
 
 
+**延伸阅读**
 
-
-#### References
-
-- [protractor 入门的 slides, 很棒](http://ramonvictor.github.io/protractor/slides/#/1)
+- [Protractor 入门的 slides, 很棒](http://ramonvictor.github.io/protractor/slides/#/1)
 - [offical docs, 全面](https://github.com/angular/protractor/tree/master/docs)
+- [Selenium WebDriver 原理的介绍](http://www.aosabook.org/en/selenium.html)
