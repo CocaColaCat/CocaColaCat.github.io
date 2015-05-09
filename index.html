@@ -1,6 +1,6 @@
 ---
 layout: default
-title: YUE's 
+title: YUE 声悦
 ---
 
 {% for post in site.posts %}
@@ -20,7 +20,7 @@ title: YUE's
           	{{ post.tags | array_to_sentence_string }}
           </a>
           <span class="postMetaInline postMetaInline--supplemental">
-            <a class="link link--darken" title="Go to the profile of Room to Read" href="https://medium.com/@RoomtoRead" dir="auto">{{ post.level }}</a>
+            <a class="link link--darken" title="Go to the profile of Room to Read" href="{{ post.url }}" dir="auto">{{ post.level }}</a>
             <span class="middotDivider"></span>
             {{ post.date | date_to_string }}<span></span>
           </span>
@@ -56,7 +56,7 @@ title: YUE's
     
     <div class="block-postMeta postMeta-previewFooter">
       <div class="u-floatLeft">
-        <a class="link link--accent link--darken" href="https://medium.com/@JakeHanrahan/meeting-a-silk-road-drugs-boss-72f2bcf11ae9?source=reading-list" data-action="open-post" data-action-value="https://medium.com/@JakeHanrahan/meeting-a-silk-road-drugs-boss-72f2bcf11ae9?source=reading-list"> 继续阅读</a>
+        <a class="link link--accent link--darken" href="{{ post.url }}"> 继续阅读</a>
         <span class="middotDivider"></span>
         <span class="postMetaInline postMetaInline--bookmark">
           <span class="readingTime">{{ post.content | number_of_words }} 字</span>

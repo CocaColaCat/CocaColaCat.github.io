@@ -500,3 +500,15 @@ body.is-withMagicUnderlines .postArticle--short .markup--anchor {
   color: rgba(0,0,0,0.3);
   font-size: 13px;
 }
+
+.postMetaInline--supplemental a:hover{
+	color: rgba(0,0,0,0.9);
+}
+
+.postMeta-previewFooter .u-floatLeft a:hover{
+	color: #008B00
+}
+
+.postMetaInline-feedSummary a:hover{
+	color: #008B00
+}
