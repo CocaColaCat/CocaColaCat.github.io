@@ -41,6 +41,17 @@ title: YUE 声悦
                   <section class=" section--content section--first section--last">
                     <div class="section-content">
                       <div class="section-inner layoutSingleColumn">
+
+                      	{% if post.preview_image %} 
+													<figure name="previewImage" id="previewImage" class="graf--figure postField--croppedHeightPreviewImage graf--first">
+														<div class="aspectRatioPlaceholder is-locked">
+															<div class="aspect-ratio-fill" style="padding-bottom: 30%;">
+															</div>
+															<img class="graf-image" data-image-id="1*S7ZjPV3j_9ZgVA6seCTa4w.jpeg" data-width="3264" data-height="2448" src="{{ post.preview_image }}">
+														</div>
+													</figure>
+												{% endif %}
+
                         <h2 name="73c1" id="73c1" class="graf--h2 graf--first">{{ post.title }}</h2>
                         <p name="c296" id="c296" class="graf--p graf--last">{{ post.brief }}</p>
                       </div>

@@ -512,3 +512,55 @@ body.is-withMagicUnderlines .postArticle--short .markup--anchor {
 .postMetaInline-feedSummary a:hover{
 	color: #008B00
 }
+
+.postArticle--short .graf--first {
+  margin-top: 0;
+}
+
+.postArticle--short .graf--figure {
+  margin-bottom: 20px;
+}
+
+.graf--figure {
+  position: relative;
+  margin-bottom: 30px;
+  clear: both;
+  outline: none;
+  box-sizing: border-box;
+}
+
+figure {
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 40px;
+  -webkit-margin-end: 40px;
+}
+
+.aspectRatioPlaceholder {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.aspectRatioPlaceholder.is-locked .graf-image, .aspectRatioPlaceholder.is-locked .graf-imageAnchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.graf-image, .graf-imageAnchor, .iframeContainer>iframe, .iframeContainer {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+img {
+  border: 0;
+}
+
+h1, h2, h3, h4, h5, h6, dl, dd, ol, ul, menu, figure, blockquote, p, pre, form {
+  margin: 0;
+}
