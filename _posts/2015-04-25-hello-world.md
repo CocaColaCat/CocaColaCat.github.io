@@ -1,6 +1,10 @@
 ---
 title: 开始是一首小诗
 layout: post
+tag: YUE 声
+level: 无
+brief: 面朝希望，春暖花开
+image_url: "/assets/images/yue.jpeg"
 ---
 {{ page.title }}
 ================

@@ -1,13 +1,69 @@
 ---
 layout: default
-title: 
+title: YUE's 
 ---
 
-<div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
+{% for post in site.posts %}
+  <div class="block block--inset block--list block--preview js-block js-trackedPost postItem">
+
+    <div class="block-postMeta postMeta-previewHeader">
+      <div class="u-floatLeft">
+
+        <div class="postMetaInline-avatar">
+          <a class="link" title="{{ post.title }}" href="{{ post.url }}">
+            <img src="{{ post.image_url }}" class="avatar-image avatar-image--roundedRectangle u-xs-size32x32 u-sm-size36x36" alt="">
+          </a>
+        </div>
+
+        <div class="postMetaInline-feedSummary">
+          <a class="link link--accent link--darken" title="" href="{{ post.url }}">
+          	{{ post.tags | array_to_sentence_string }}
+          </a>
+          <span class="postMetaInline postMetaInline--supplemental">
+            <a class="link link--darken" title="Go to the profile of Room to Read" href="https://medium.com/@RoomtoRead" dir="auto">{{ post.level }}</a>
+            <span class="middotDivider"></span>
+            {{ post.date | date_to_string }}<span></span>
+          </span>
+        </div>
+
+      </div>
+      <div class="u-floatRight"></div>
+    </div> <!-- end previewHeader -->
+
+    <div class="block-streamText">
+      <div class="block-content">
+        <article class="postArticle postArticle--short">
+          <a href="{{ post.url }}" class="block-linkHack"></a>
+          <div class="layoutSingleColumn">
+            <section class="postWrapper">
+              <div class="postContent">
+                <div class="postField postField--body">
+                  <section class=" section--content section--first section--last">
+                    <div class="section-content">
+                      <div class="section-inner layoutSingleColumn">
+                        <h2 name="73c1" id="73c1" class="graf--h2 graf--first">{{ post.title }}</h2>
+                        <p name="c296" id="c296" class="graf--p graf--last">{{ post.brief }}</p>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </section>
+          </div>
+        </article>
+      </div>
+    </div> <!-- end streamText -->
+    
+    <div class="block-postMeta postMeta-previewFooter">
+      <div class="u-floatLeft">
+        <a class="link link--accent link--darken" href="https://medium.com/@JakeHanrahan/meeting-a-silk-road-drugs-boss-72f2bcf11ae9?source=reading-list" data-action="open-post" data-action-value="https://medium.com/@JakeHanrahan/meeting-a-silk-road-drugs-boss-72f2bcf11ae9?source=reading-list"> 继续阅读</a>
+        <span class="middotDivider"></span>
+        <span class="postMetaInline postMetaInline--bookmark">
+          <span class="readingTime">{{ post.content | number_of_words }} 字</span>
+        </span>
+      </div>
+    </div> <!-- end previewFooter -->
+
+  </div> <!-- end block -->
+
+{% endfor %}

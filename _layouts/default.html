@@ -4,81 +4,54 @@
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
    <title>{{ page.title }}</title>
    <meta name="author" content="JP Joanna" />
-   <!-- <link href="http://feeds.feedburner.com/tom-preston-werner" rel="alternate" title="Tom Preston-Werner" type="application/atom+xml" /> -->
    <meta name="readability-verification" content="QCzSs992GxmRYRKVpPeZ6LE2tS8aYKxsSSQKV8YM"/>
-
-   <!-- syntax highlighting CSS -->
    <link rel="stylesheet" href="/assets//css/syntax.css" type="text/css" />
-
-   <!-- Homepage CSS -->
-   <link rel="stylesheet" href="/assets/css/screen.css" type="text/css" media="screen, projection" />
-
-   <!-- Typekit -->
-   <script type="text/javascript" src="http://use.typekit.com/jpd0pfm.js"></script>
-   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+   <link rel="stylesheet" href="/assets/css/screen_new.css" type="text/css" media="screen, projection" />
 </head>
 <body>
+<div class="site-main surface-container">
+  <div class="surface">
+    <div class="screenContent surface-content">
+      <div class="u-foreground js-homepage">
+        
+        <div class="metabar u-clearfix js-metabar metabar--top metabar--bordered">
+          <div class="metabar-block metabar-left u-floatLeft">
+            <a href="https://medium.com/" alt="Homepage" data-log-event="home" class="siteNav-logo siteNav-logo--wordmark">
+              <span class="icon icon--logoM"></span>
+              <span class="icon icon--wordmark"></span>
+            </a>
+          </div>
+          <div class="metabar-block metabar-center">
+            <nav class="navTabs navTabs--metabar navTabs--narrow">
+              <ul class="navTabs-list layoutSingleColumn">
+                <li class="navTabs-item is-active">
+                  <a class="navTabs-anchor" href="/">HOME</a>
+                </li>
+                <li class="navTabs-item">
+                  <a class="navTabs-anchor" href="/" data-action="view-top-stories">ABOUT</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
 
-<!-- ClickTale Top part -->
-<script type="text/javascript">
-var WRInitTime=(new Date()).getTime();
-</script>
-<!-- ClickTale end of Top part -->
+        <div class="layoutSingleColumn layoutSingleColumn--withSidebar u-sizeViewHeightMin100">
 
-<div class="site">
-  <div class="title">
-    <a href="/">JP - Joanna</a>
-    <a class="extra" href="/">home</a>
-  </div>
-  
-  {{ content }}
-  
-  <div class="footer">
-    <div class="contact">
-      <p>
-        JP - Joanna<br />
-        <!-- Cofounder of <a href="http://github.com/">GitHub</a><br /> -->
-        <!-- tom@mojombo.com -->
-      </p>
+          <div class="blockGroup blockGroup--posts js-blockGroupPosts blockGroup--inset blockGroup--list container u-size620">
+            <div class="blockGroup-list layoutSingleColumn">
+              
+            {{content}}
+
+            </div> <!-- end blockGroup-list  -->
+
+          </div> <!-- end blockGroup--posts -->
+
+
+        </div> <!-- end layoutSingleColumn -->
+
+      </div>
     </div>
-    <div class="contact">
-      <p>
-        <a href="https://github.com/CocaColaCat/">https://github.com/CocaColaCat</a><br />
-        <!-- <a href="http://twitter.com/mojombo/">twitter.com/mojombo</a><br /> -->
-        <!-- <a href="http://flickr.com/photos/mojombo/">flickr.com/photos/mojombo</a> -->
-      </p>
-    </div>
-    <!-- <div class="rss"> -->
-      <!-- <a href="http://feeds.feedburner.com/tom-preston-werner"> -->
-        <!-- <img src="/images/rss.png" alt="Subscribe to RSS Feed" /> -->
-      <!-- </a> -->
-    <!-- </div> -->
   </div>
 </div>
-
-<!-- <a href="http://github.com/mojombo"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a> -->
-
-<!-- ClickTale Bottom part -->
-<div id="ClickTaleDiv" style="display: none;"></div>
-<script type="text/javascript">
-if(document.location.protocol!='https:')
-  document.write(unescape("%3Cscript%20src='http://s.clicktale.net/WRb.js'%20type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-if(typeof ClickTale=='function') ClickTale(206,0.3,"www03");
-</script>
-<!-- ClickTale end of Bottom part -->
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-6016902-1");
-pageTracker._trackPageview();
-</script>
-<!-- Google Analytics end -->
-
 </body>
 </html>

@@ -1,6 +1,10 @@
 ---
 title: 如何调用微信基础授权实现无登录交互
 layout: post
+tags: ['Rails', 'WeChat']
+level: 中级
+brief: 这篇文章简述了如何利用微信的 OAuth2 授权机制，帮助你的网站实现无登录交互体验。
+image_url: "/assets/images/wechat.jpg"
 ---
 
 {{ page.title }}

@@ -1,6 +1,10 @@
 ---
 title: Rails App 性能优化实战篇 - 1 （初级）
 layout: post
+tags: ['Rails', 'PostgreSQL']
+level: 入门
+brief: 本文简述了 Rails App 开发中会用到的性能优化技巧。包括了通过编写 PostgreSQL aggregation sql 来提取时间有关的统计数据。
+image_url: "/assets/images/postgresql.jpeg"
 ---
 
 {{ page.title }}

@@ -1,6 +1,10 @@
 ---
 title: 一步一步教你配置 AngularJS 测试环境
 layout: post
+tags: ['AngularJS', 'Testing']
+level: 入门
+brief: 本文记录了如何一步一步的配置 AngularJS 的 unit 和 e2e 测试环境。AngularJS 的测试会用到 protractor, Jasmine, PhantomJS, ghost driver, Selenium 等库。文中会简要的描述它们之间的关系。希望读者可以参考本文顺利搭建测试环境，少走弯路。
+image_url: "/assets/images/angularjs.jpg"
 ---
 {{ page.title }}
 ================
