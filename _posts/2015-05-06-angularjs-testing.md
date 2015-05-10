@@ -6,14 +6,7 @@ level: 入门
 brief: 本文记录了如何一步一步的配置 AngularJS 的 unit 和 e2e 测试环境。AngularJS 的测试会用到 protractor, Jasmine, PhantomJS, ghost driver, Selenium 等库。文中会简要的描述它们之间的关系。希望读者可以参考本文顺利搭建测试环境，少走弯路。
 image_url: "/assets/images/angularjs.jpg"
 ---
-{{ page.title }}
-================
-
-<p class="meta">06 May 2015 - GZ</p> 
-
-**Brief**
-
-本文记录了如何一步一步的配置 AngularJS 的 [unit](https://docs.angularjs.org/guide/unit-testing) 和 [e2e](https://docs.angularjs.org/guide/e2e-testing) 测试环境。AngularJS 的测试会用到 [protractor](https://angular.github.io/protractor/#/), [karma](https://karma-runner.github.io/0.12/index.html), [Jasmine](http://jasmine.github.io/), [PhantomJS](http://phantomjs.org/), [ghost driver](https://github.com/detro/ghostdriver), [Selenium](http://www.seleniumhq.org/) 等库。文中会简要的描述它们之间的关系。希望读者可以参考本文顺利搭建测试环境，少走弯路。
+<h3 class="graf--h3"> {{ page.title }}</h3>
 
 ** 原理 **
 
@@ -23,9 +16,19 @@ image_url: "/assets/images/angularjs.jpg"
 
 以下是 unit 和 e2e 测试的简图。Selenium Server 定义了一套 OOP API，所以任何理解这套 API 的 client 都可以发送测试指令给 Selenium，然后 Selenium 再调动目标浏览器运行测试代码。它强大之处在于 Selenium Server 运行在 A， 可以接收从 B 发来的测试指令，然后 Selenium Server 调用 C 处的浏览器来运行测试。
 
-![Karma 测试]({{ site.url }}/assets/images/karma_test_diagram.png)
+<figure class="graf--figure">
+  <div class="aspectRatioPlaceholder is-locked" style="max-width: 620px; max-height: 388px;">
+    <div class="aspect-ratio-fill" style="padding-bottom: 62.6%;"></div>
+    <img class="graf-image" src="{{ site.url }}/assets/images/karma_test_diagram.png">
+  </div>
+</figure>
 
-![Protractor 测试]({{ site.url }}/assets/images/protractor_test_diagram.png)
+<figure class="graf--figure">
+  <div class="aspectRatioPlaceholder is-locked" style="max-width: 620px; max-height: 388px;">
+    <div class="aspect-ratio-fill" style="padding-bottom: 62.6%;"></div>
+    <img class="graf-image" src="{{ site.url }}/assets/images/protractor_test_diagram.png">
+  </div>
+</figure>
 
 ** 搭建 unit 测试环境 **
 
@@ -46,11 +49,12 @@ image_url: "/assets/images/angularjs.jpg"
 
 然后运行，后一条指令是按照 karam 的 cli，这样就可以直接调用 karma 而不需要路径。
 
-```
+{% highlight bash %}
 $ npm install
 $ npm install -g karma-cli
-```
+{% endhighlight %}
 
+<br />
 接着是配置 karma。官网的解释很好，[点击查看](http://karma-runner.github.io/0.12/intro/configuration.html)。下面是文主用的配置文件 karma.conf.js，放在测试文件夹下面。这个配置仅包含最基础的设置，详情查看[官网](http://karma-runner.github.io/0.12/config/configuration-file.html)。
 
 {% highlight js %}
@@ -82,9 +86,11 @@ module.exports = function(config){
 
 这样单元测试的环境就算配置好了。本文就不给出测试例子，请参考 AngularJS 的官网[例子](https://docs.angularjs.org/guide/unit-testing)。最后运行测试
 
-```
+{% highlight bash %}
 $ karma start path_to_your_karma_conf_file/karma.conf.js
-```
+{% endhighlight %}
+
+<br />
 
 ** 搭建 e2e 测试环境 **
 
@@ -108,11 +114,15 @@ npm install。Protractor 需要链接到 Selenium server 才能运行测试，Se
 - 让 Protractor 启动 Selenium server
 - 链接到远程的 Selenium server
 
+<br />
+
 本文关注第二种方法的配置。Selenium 是一个 Java 程序，所以系统需要安装有 Java，以下是在 Mac 上安装的[步骤](https://www.java.com/en/download/help/index_installing.xml)。然后需要下载 seleniumServerJar 文件，这可以通过 protractor 的命令行工具下载。
 
-```
+{% highlight bash %}
 $ ./node_modules/protractor/bin/webdriver-manager update
-``` 
+{% endhighlight %}
+
+<br />
 
 以下是配置文件 protractor.conf.js， 放在测试文件夹下面。
 
@@ -159,9 +169,9 @@ exports.config = {
 
 这样 e2e 测试的环境就算配置好了。本文就不给出测试例子，请参考官网[例子](这样单元测试的环境就算配置好了。本文就不给出测试例子，请参考 AngularJS 的官网[例子](https://docs.angularjs.org/guide/unit-testing)。 最后运行测试
 
-```
+{% highlight bash %}
 $ ./node_modules/protractor/bin/protractor ./mobile/tests/protractor.conf
-```
+{% endhighlight %}
 
 ** 待完成 **
 
@@ -176,4 +186,5 @@ $ ./node_modules/protractor/bin/protractor ./mobile/tests/protractor.conf
 - [offical docs, 全面](https://github.com/angular/protractor/tree/master/docs)
 - [Selenium WebDriver 原理的介绍](http://www.aosabook.org/en/selenium.html)
 
+<br />
 （完)

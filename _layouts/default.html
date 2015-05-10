@@ -9,49 +9,49 @@
    <link rel="stylesheet" href="/assets/css/screen_new.css" type="text/css" media="screen, projection" />
 </head>
 <body>
-<div class="site-main surface-container">
-  <div class="surface">
-    <div class="screenContent surface-content">
-      <div class="u-foreground js-homepage">
-        
-        <div class="metabar u-clearfix js-metabar metabar--top metabar--bordered">
-          <div class="metabar-block metabar-left u-floatLeft">
-            <a href="https://medium.com/" alt="Homepage" data-log-event="home" class="siteNav-logo siteNav-logo--wordmark">
-              <span class="icon icon--logoM"></span>
-              <span class="icon icon--wordmark"></span>
-            </a>
+  <div class="site-main surface-container">
+    <div class="surface">
+      <div class="screenContent surface-content">
+        <div class="u-foreground js-homepage">
+          
+          <div class="metabar u-clearfix js-metabar metabar--top metabar--bordered">
+            <div class="metabar-block metabar-left u-floatLeft">
+              <a href="https://medium.com/" alt="Homepage" data-log-event="home" class="siteNav-logo siteNav-logo--wordmark">
+                <span class="icon icon--logoM"></span>
+                <span class="icon icon--wordmark"></span>
+              </a>
+            </div>
+            <div class="metabar-block metabar-center">
+              <nav class="navTabs navTabs--metabar navTabs--narrow">
+                <ul class="navTabs-list layoutSingleColumn">
+                  <li class="navTabs-item is-active">
+                    <a class="navTabs-anchor" href="/">HOME</a>
+                  </li>
+                  <li class="navTabs-item">
+                    <a class="navTabs-anchor" href="/" data-action="view-top-stories">ABOUT</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
-          <div class="metabar-block metabar-center">
-            <nav class="navTabs navTabs--metabar navTabs--narrow">
-              <ul class="navTabs-list layoutSingleColumn">
-                <li class="navTabs-item is-active">
-                  <a class="navTabs-anchor" href="/">HOME</a>
-                </li>
-                <li class="navTabs-item">
-                  <a class="navTabs-anchor" href="/" data-action="view-top-stories">ABOUT</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+
+          <div class="layoutSingleColumn layoutSingleColumn--withSidebar u-sizeViewHeightMin100">
+
+            <div class="blockGroup blockGroup--posts js-blockGroupPosts blockGroup--inset blockGroup--list container u-size620">
+              <div class="blockGroup-list layoutSingleColumn">
+                
+              {{content}}
+
+              </div> <!-- end blockGroup-list  -->
+
+            </div> <!-- end blockGroup--posts -->
+
+
+          </div> <!-- end layoutSingleColumn -->
+
         </div>
-
-        <div class="layoutSingleColumn layoutSingleColumn--withSidebar u-sizeViewHeightMin100">
-
-          <div class="blockGroup blockGroup--posts js-blockGroupPosts blockGroup--inset blockGroup--list container u-size620">
-            <div class="blockGroup-list layoutSingleColumn">
-              
-            {{content}}
-
-            </div> <!-- end blockGroup-list  -->
-
-          </div> <!-- end blockGroup--posts -->
-
-
-        </div> <!-- end layoutSingleColumn -->
-
       </div>
     </div>
   </div>
-</div>
 </body>
 </html>

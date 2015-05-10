@@ -128,7 +128,14 @@ body {
   list-style: none;
 }
 
+.blockGroup .layoutSingleColumn {
+  width: 100%;
+  margin: 0;
+  max-width: 580px;
+}
+
 .layoutSingleColumn {
+  width: 700px;
   margin: 0 auto;
 }
 
@@ -324,6 +331,7 @@ img {
   letter-spacing: -0.02em;
   font-weight: 400;
   font-style: normal;
+  font-size: 14px;
   color: rgba(0,0,0,0.3);
 }
 
@@ -358,7 +366,7 @@ img {
   transform: translateZ(0);
 }
 
-article {
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
@@ -407,8 +415,11 @@ article {
 
 .postContent {
   font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;
+  letter-spacing: .01rem;
   font-weight: 400;
   font-style: normal;
+  font-size: 22px;
+  line-height: 1.5;
 }
 
 .postArticle--short .postField--body {
@@ -431,9 +442,26 @@ article {
   padding-bottom: 0;
 }
 
+.section--last {
+  padding-bottom: 5px;
+}
+
 .postField--body>section {
   position: relative;
   clear: both;
+}
+
+.postField--body {
+  margin-bottom: 30px;
+}
+
+.postField--body:after {
+  clear: both;
+}
+
+.postField--body:before, .postField--body:after {
+  display: table;
+  content: " ";
 }
 
 hr.section-divider {
@@ -449,8 +477,29 @@ hr.section-divider {
 
 .graf--h2 {
   font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  letter-spacing: -0.02em;
   font-weight: 700;
   font-style: normal;
+  font-size: 60px;
+  margin-left: -3px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-top: 40px;
+  padding-top: 0;
+  margin-bottom: 8px;
+  color: rgba(0,0,0,0.8);
+}
+
+.graf--h3 {
+  font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 34px;
+  margin-left: -1.8px;
+  line-height: 1.2;
+  margin-top: 40px;
+  margin-bottom: 4px;
   color: rgba(0,0,0,0.8);
 }
 
@@ -563,4 +612,185 @@ img {
 
 h1, h2, h3, h4, h5, h6, dl, dd, ol, ul, menu, figure, blockquote, p, pre, form {
   margin: 0;
+}
+
+.listingEditorOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  z-index: 500;
+  display: none;
+}
+
+.metabar.is-withCollectionLogo .metabar-block:not(.metabar-center) {
+  background-color: rgba(255,255,255,0.85);
+}
+
+.metabar-block:not(.metabar-center) {
+  position: relative;
+  z-index: 500;
+}
+
+.siteNav-logo>.icon {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.icon {
+  font-family: 'medium-icons';
+  font-weight: normal;
+  font-style: normal;
+  speak: none;
+  text-decoration: none;
+  text-transform: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.siteNav-logo>.icon--logoM:before {
+  color: #333332;
+  font-size: 27px;
+  line-height: 48px;
+}
+
+.icon--logoM:before {
+  content: "\f14b";
+}
+
+.metabar-divider--first {
+  margin-left: 0;
+}
+
+.metabar-divider {
+  border-right: 1px solid rgba(0,0,0,0.15);
+  margin: 16px 15px 0 6px;
+  height: 28px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.u-showOnTabletPortrait, .u-showOnTabletMini, .u-showOnMobile {
+  display: none !important;
+}
+
+.metabar-block>.postMetaInline--avatar {
+  margin-right: 10px;
+}
+
+.metabar-block>.postMetaInline {
+  margin-top: 13px;
+  white-space: nowrap;
+  line-height: 32px;
+  vertical-align: top;
+}
+
+.metabar-block>.postMetaInline .avatar-image--icon {
+  margin-top: 1px;
+  margin-right: 0;
+}
+
+.avatar-image--icon {
+  width: 32px;
+  height: 32px;
+}
+
+.metabar-logoWrapper {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+img.metabar-logo {
+  max-height: 36px;
+}
+
+.metabar-logo {
+  margin: 14px 0;
+}
+
+.u-hide {
+  display: none !important;
+}
+
+body:not(.is-postEditMode) .postArticle {
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0, 0, 0, .995);
+  transition-duration: 150ms;
+}
+
+.notesSource {
+  position: relative;
+}
+
+.graf--p, .graf--blockquote, .graf--pullquote {
+  margin-bottom: 30px;
+}
+
+i, cite, em, var, address, dfn {
+  font-style: italic;
+}
+
+.graf--h4 {
+  font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 32px;
+  margin-left: -1.6px;
+  line-height: 1.2;
+  color: rgba(0,0,0,0.44);
+  margin-top: 40px;
+  margin-bottom: 2px;
+}
+
+.graf--pullquote {
+  line-height: 1.4;
+  text-align: center;
+  font-size: 32px;
+  margin: 48px -160px;
+  border: none;
+  padding: 0;
+  font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+  letter-spacing: .01rem;
+  font-weight: 400;
+  font-style: italic;
+  transition: margin 100ms;
+}
+
+blockquote {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 40px;
+  -webkit-margin-end: 40px;
+}
+
+.section--content {
+  padding-top: 105px;
+}
+
+p{
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+strong{
+  line-height: 2.8;
+  font-size: 18px;
+}
+
+.section-content ul{
+  font-size: 14px;
+}
+
+.section-content ul li{
+  margin-left: 30px;
+  list-style: initial;
 }
