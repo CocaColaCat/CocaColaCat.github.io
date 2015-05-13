@@ -37,3 +37,9 @@ https://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/1977
 学习链表的时候困惑了，于是有人用链表实现贪吃蛇
 http://blog.csdn.net/dog250/article/details/6787135
 
+ruby 链表实现
+http://matt.weppler.me/2013/08/14/implementing-a-linked-list-in-ruby.html
+
+functional programming for LL ruby
+https://zvkemp.github.io/blog/2014/12/15/introduction-to-functional-programming-in-ruby-linked-lists/
+
