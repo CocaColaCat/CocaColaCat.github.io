@@ -47,4 +47,9 @@ http://en.wikipedia.org/wiki/Linked_list
 － 数组可以利用 Locality of reference 来缓存查找
 － 链表需要额外的空间来存储 pointers，对于小数列来说浪费空间。有 storage overhead 的问题
 
+ruby 链表实现
+http://matt.weppler.me/2013/08/14/implementing-a-linked-list-in-ruby.html
+
+functional programming for LL ruby
+https://zvkemp.github.io/blog/2014/12/15/introduction-to-functional-programming-in-ruby-linked-lists/
 
