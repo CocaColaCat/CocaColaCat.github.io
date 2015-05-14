@@ -10,7 +10,7 @@ image_url: "/assets/images/math.png"
 
 <br />
 
-在实际中，快排算法被证明是效率最高的对比算法 (Comparison Sort)。最好情况和 merge sort 一样，达到 nlgn。最差是 n2。
+在实际中，快排算法被证明是效率最高的对比算法 (Comparison Sort)。最好情况和 merge sort 一样，达到 Θ(nlgn)。最差是 Θ(n^{2})。
 
 <br />
 

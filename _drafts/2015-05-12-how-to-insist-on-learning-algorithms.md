@@ -37,3 +37,14 @@ https://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/1977
 学习链表的时候困惑了，于是有人用链表实现贪吃蛇
 http://blog.csdn.net/dog250/article/details/6787135
 
+全面介绍 linked list 得 wiki
+http://en.wikipedia.org/wiki/Linked_list
+链表和数组的优劣对比
+－ 链表的插入和删除高效，只需要处理上下游 node 的索引就行
+－ 数组的插入和删除都需要牵动后续的 node，因为数组是连续排布的
+－ 链表的随机查找效率低，因为它只能从头开始找
+－ 数组可以随机查找，只要知道 index 就行，但是链表不可以
+－ 数组可以利用 Locality of reference 来缓存查找
+－ 链表需要额外的空间来存储 pointers，对于小数列来说浪费空间。有 storage overhead 的问题
+
+

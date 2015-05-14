@@ -1,3 +1,4 @@
 encoding: utf-8
 markdown: rdiscount
 highlighter: pygments
+paginate: 3
