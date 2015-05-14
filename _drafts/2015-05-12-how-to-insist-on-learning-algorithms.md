@@ -62,3 +62,8 @@ http://alexyoung.org/2009/04/09/lets-make-a-game-snake/
 http://www.rubydoc.info/gems/ruby_snake/0.1.1
 http://www.artificialworlds.net/presentations/snake-ruby/snake-ruby.html
 
+http://codeincomplete.com/posts/2011/8/5/starting_snakes/
+https://gamedev.stackexchange.com/questions/33786/snake-game-logic
+
+https://www.youtube.com/watch?v=FABTl1Q1byw
+
