@@ -53,3 +53,12 @@ http://matt.weppler.me/2013/08/14/implementing-a-linked-list-in-ruby.html
 functional programming for LL ruby
 https://zvkemp.github.io/blog/2014/12/15/introduction-to-functional-programming-in-ruby-linked-lists/
 
+snake js implementation
+http://www.codecademy.com/karapuzz/codebits/CNUPkC/edit
+
+ruby implementation
+http://alexyoung.org/2009/04/09/lets-make-a-game-snake/
+
+http://www.rubydoc.info/gems/ruby_snake/0.1.1
+http://www.artificialworlds.net/presentations/snake-ruby/snake-ruby.html
+
