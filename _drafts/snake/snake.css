@@ -1,0 +1,33 @@
+
+.gameBoard{
+  float: left;
+}
+
+.gameResult{
+  float: left;
+  margin-left: 20px;
+  border: 2px black solid;
+  width: 200px;
+  height: 390px;
+  background: beige;
+  padding: 5px;
+}
+
+#gameField{
+  width: 400px;
+  height: 400px;
+  border: 2px black solid;
+  background: beige;
+}
+
+#food{
+  width: 8px;
+  height: 8px;
+  background: green;
+  /*margin-top: 100px;*/
+  /*margin-left: 200px;*/
+}
+
+#rule{
+  margin-top: 30px
+}
