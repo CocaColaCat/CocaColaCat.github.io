@@ -6,6 +6,8 @@ var gameExecutor;
 
 var score;
 
+var moveDirection;
+
 // game keys
 var SPACE = 32;
 var ESC = 27;
@@ -20,7 +22,7 @@ $(document).ready(function(){
 
 function keyPressedHandler(e){
   code = (e.keyCode? e.keyCode : e.which);
-  // alert(code);
+  console.log(code);
   switch(code){
     case LEFT_ARROW:
       moveDirection = 'left';
@@ -52,6 +54,7 @@ function endGame(){
 function startGame(){
   gameBoard = new GameBoard();
   var gameSpeed = 100;
+  moveDirection = 'right';
 
   snake = new Snake(80,80);
   // snake.onCrash(snakeCrashHandler);
@@ -69,8 +72,8 @@ function move(){
 
 function generateFood(){
   if(food.xPos == undefined){
-    food.xPos = Math.floor(Math.random()*392+1);
-    food.yPos = Math.floor(Math.random()*392+1);
+    food.xPos = Math.floor(Math.random()*50+1)*8;
+    food.yPos = Math.floor(Math.random()*50+1)*8;
     gameBoard.drawFood();
   }
 };
@@ -94,10 +97,52 @@ function Snake(startX, startY){
     return bodyParts;
   };
 
+  this.length = function(){
+    return bodyParts.length
+  };
+
   this.move = function(){
+    gameBoard.clearBody();
     newHead = this.getNewHead();
-    bodyParts
+    // console.log(newHead);
+    for (var i = 0; i < this.length() - 1 ; i++) {
+      bodyParts[i+1] = bodyParts[i];
+    }
+    bodyParts[0] = newHead;
     gameBoard.drawBody();
+    this.checkCollision();
+  };
+
+  this.head = function(){
+    return bodyParts[0];
+  };
+
+  this.checkCollision = function(){
+    console.log(this.head());
+    if (this.head().xPos < 0 || this.head().xPos > 400 || this.head().yPos < 0 || this.head().yPos > 400){
+      endGame();
+      // clearInterval(gameExecutor);
+      alert('crash on border, game end');
+    }
+  };
+
+  this.getNewHead = function(){
+    currentHead = bodyParts[0];
+    switch(moveDirection){
+      case 'right':
+        return new BodyPart(currentHead.xPos,currentHead.yPos+8,'right');
+        break;
+      case 'left':
+        return new BodyPart(currentHead.xPos,currentHead.yPos-8,'left');
+        break;
+      case 'up':
+        return new BodyPart(currentHead.xPos-8,currentHead.yPos,'up');
+        break;
+      case 'down':
+        return new BodyPart(currentHead.xPos+8,currentHead.yPos,'down');
+        break;
+    }
+
   };
 
 };
@@ -105,15 +150,24 @@ function Snake(startX, startY){
 function GameBoard(){
 
   this.drawBody = function(){
-    bodyParts = snake.getBody
+    bodyParts = snake.getBody();
+    for (var i = 0; i < bodyParts.length ; i++) {
+      $('#gameField').append("<div class='bodyPart' style='top:"+bodyParts[i].xPos+"px;left:"+bodyParts[i].yPos+"px'></div>")
+    }
   };
 
   this.clearBoard = function(){
     $('#food').remove();
+    this.clearBody();
+  };
+
+  this.clearBody = function(){
+    $('.bodyPart').remove();
   };
 
   this.drawFood = function(){
-    $('#gameField').append("<div id='food' style='margin-top:"+food.xPos+"px;margin-left:"+food.yPos+"px'></div>");
+    $('#gameField').append("<div id='food' style='top:"+food.xPos+"px;left:"+food.yPos+"px'></div>");
   };
+
 };
 
