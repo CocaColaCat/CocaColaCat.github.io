@@ -50,13 +50,18 @@ function endGame(){
   clearInterval(gameExecutor);
 };
 
+var snakeCrashHandler = function(){
+  alert('crash on body, game end');
+  endGame();
+};
+
 function startGame(){
   gameBoard = new GameBoard();
   var gameSpeed = 100;
   moveDirection = 'right';
 
   snake = new Snake(80,80);
-  // snake.onCrash(snakeCrashHandler);
+  // snake.grow();
   gameExecutor = setInterval(move, gameSpeed)
 };
 
@@ -84,9 +89,6 @@ function updateScore(){
   gameBoard.updateScore();
 };
 
-function snakeCrashHandler(){
-  endGame();
-};
 
 function BodyPart(x,y,direction){
   this.xPos = x;
@@ -97,6 +99,80 @@ function BodyPart(x,y,direction){
 function Snake(startX, startY){
 
   var bodyParts = [new BodyPart(startX,startY,'right')];
+
+  this.grow = function(){
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+    newHead = this.getNewHead();
+    bodyParts.unshift(newHead);
+  };
 
   this.getBody = function(){
     return bodyParts;
@@ -129,6 +205,11 @@ function Snake(startX, startY){
       clearInterval(gameExecutor);
       alert('crash on border, game end');
     }
+    for (var i = 1; i < this.length(); i++) {
+      if (this.head().xPos == bodyParts[i].xPos && this.head().yPos == bodyParts[i].yPos){
+        snakeCrashHandler();
+      }
+    };
   };
 
   this.onFoodPosition = function(){
@@ -212,7 +293,6 @@ function GameBoard(){
   };
 
   this.updateScore = function(){
-    // console.log(snake.length());
     $('#gameScore').html(snake.length());
   };
 
