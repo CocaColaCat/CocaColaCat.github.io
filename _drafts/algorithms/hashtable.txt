@@ -1,0 +1,9 @@
+http://algs4.cs.princeton.edu/34hash/c
+
+hash tables:
+- hash function, modular hashing (we choose the array size M to be prime, and, for any positive integer key k, compute the remainder when dividing k by M)
+
+
+divisor etc
+- collision, chaining
+- uniform hashing
