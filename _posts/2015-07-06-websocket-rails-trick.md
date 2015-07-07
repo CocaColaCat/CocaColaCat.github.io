@@ -64,4 +64,11 @@ GetThingDoneWorker.perform_asyn
 
 后续：
 
-- 在 github 上面提出 issue，问题还是应该考究下去，增进对 eventmachine 的理解。
+第二天再查看 wiki，看到了 [Multiple Servers and Background Jobs](https://github.com/websocket-rails/websocket-rails/wiki/Multiple-Servers-and-Background-Jobs)
+文档，才知道如果想用 background job 的话，必须把 config.synchronize = true 设定。
+
+问题就这么解决了。
+
+这确实是一个坑。总结来说，在 standalone = false 是，想要在后台作业中推送消息，就需要设置 synchronize 为 true；反之，在 standalone = true 时，并不需要配置。其中的道理或许只能等有时间看源码才知道了。
+
+学习了。 
