@@ -1,90 +1,32 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>{{ page.title }}</title>
-   <meta name="author" content="JP Joanna" />
-   <meta name="readability-verification" content="QCzSs992GxmRYRKVpPeZ6LE2tS8aYKxsSSQKV8YM"/>
-   <link rel="stylesheet" href="/assets//css/syntax.css" type="text/css" />
-   <link rel="stylesheet" href="/assets/css/screen_new.css" type="text/css" media="screen, projection" />
-</head>
+  <head>
+     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+     <title>{{ page.title }}</title>
+     <meta name="author" content="JP Joanna" />
+     <!-- <meta name="readability-verification" content="QCzSs992GxmRYRKVpPeZ6LE2tS8aYKxsSSQKV8YM"/> -->
+     <link rel="stylesheet" href="/assets/css/syntax.css" type="text/css" />
+     <link rel="stylesheet" href="/assets/css/post.css" type="text/css" media="screen, projection" />
+     <link rel="stylesheet" href="/assets/css/typo.css" type="text/css" media="screen, projection" />
+     <!-- <link rel="stylesheet" href="/assets/css/normalize.css" type="text/css" media="screen, projection" /> -->
+  </head>
 
-<body>
-  <div class="site-main surface-container">
-    <div class="surface">
-      <div class="screenContent surface-content is-supplementalPostContentLoaded">
-        <div class="listingEditorOverlay"></div>
-        
-        <div class="metabar u-clearfix js-metabar metabar--top metabar--postArticle is-withCollectionLogo">
-          <div class="metabar-block metabar-left u-floatLeft">
-            <a href="/" alt="Homepage" data-log-event="home" class="siteNav-logo">
-              <!-- <span class="icon icon--logoM"></span> -->
-              <span class="icon"></span>
-            </a>
-            <span class="metabar-divider metabar-divider--first u-showOnMobile"></span>
-            <span class="postMetaInline postMetaInline--avatar u-showOnMobile">
-              <a class="link" title="" href="/" >
-                <img src="{{ page.image_url }}" class="avatar-image avatar-image--icon avatar-image--roundedRectangle" alt="">
-              </a>
-            </span>
-          </div>
-          <div class="metabar-block metabar-center">
-            <a class="metabar-logoWrapper js-logCollection" href="/">
-              <img class="metabar-logo" src="{{ page.image_url }}">
-            </a>
-            <span class="postCollectionManagement js-postCollectionManagement postMetaInline u-hide u-xs-hide"></span>
-          </div>
-        </div> <!-- end top nav-->
-
-        <article class="u-sizeViewHeightMin100 postArticle postArticle--full postArticle--response is-languageTier1">
-          <section class="postWrapper postWrapper--full">
-            <div class="postWrapper-inner">
-              <div class="postContent">
-                <div class="postContent-inner">
-                  <div class="notesSource">
-
-                    <div class="postField postField--body" data-scroll="native">
-                      <section name="aa1c" class="section--content section--first section--last">
-
-                        <!-- <div class="section-divider layoutSingleColumn"><hr class="section-divider"></div> -->
-                        <div class="section-content">
-                          <div class="section-inner layoutSingleColumn">
-                          
-                            {{ content }}
-
-<!--                             <h2 name="d44d" id="d44d" class="graf--h2 graf--first">Well, We Failed Also.</h2>
-
-                            <p name="51e6" id="51e6" class="graf--p">
-                              <em class="markup--em markup--p-em">We set out with ambitious plans but after a year of planning, we’ve run out of plans and are shutting down our old plan.</em>
-                            </p>
-
-                            <p name="97b4" id="97b4" class="graf--p is-withNotes">
-                              I hate to say it, but the Early Clues, LLC you all came to know and love scurrying around the broom closets and bathrooms of the @Medium office is no more. We were unable to secure the additional Preality Points we needed, so we’ve decided to climb another <em class="markup--em markup--p-em">Event.Ladder()</em>. Rest assured, it has been a “wild ride.” That said, we did manage to secure a deal that allows us to keep the pocket change that falls into the couch in the <em class="markup--em markup--p-em">c</em>orporate relaxation zones, and for this we are very grateful.
-                            </p> -->
-
-<!--                             <figure name="cfde" id="cfde" class="graf--figure">
-                              <div class="aspectRatioPlaceholder is-locked" style="max-width: 400px; max-height: 265px;">
-                                <div class="aspect-ratio-fill" style="padding-bottom: 66.3%;"></div>
-                                <img class="graf-image" data-image-id="0*SHOD9o2e_rqamVAL.jpg" data-width="400" data-height="265" src="https://d262ilb51hltx0.cloudfront.net/max/1600/0*SHOD9o2e_rqamVAL.jpg">
-                              </div>
-                            </figure> -->
-                        
-                          </div>
-                        </div>
-
-                      </section>
-                    </div> <!-- end postField -->
-
-                  </div> <!-- end notesSource -->
-
-                </div>
-              </div>
-            </div>
-          </section> <!-- section end postWrapper -->
-        </article>
-
-      </div>
+  <body>
+    <div class="posttop">
+      <a class="posttop-logoWrapper" href="/">
+        <img class="posttop-logo" src="{{ page.image_url }}">
+      </a>
     </div>
-  </div>
-</body>
+
+    <div class="post-content typo">
+      <div class="poster-inner post-layoutSingleColumn">
+        {{ content }}
+      </div>
+    </article>
+
+    <div class="post-footer post-layoutSingleColumn ">
+      <!-- <a href="/">回首页</a> -->
+    </div>
+
+  </body>
 </html>

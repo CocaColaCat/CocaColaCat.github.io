@@ -1,36 +1,26 @@
 ---
-title: 一步一步教你配置 AngularJS 测试环境
+title: 一步一步配置 AngularJS 测试环境
 layout: post
 tags: ['AngularJS', 'Testing']
 level: 入门
 brief: 本文记录了如何一步一步的配置 AngularJS 的 unit 和 e2e 测试环境。AngularJS 的测试会用到 protractor, Jasmine, PhantomJS, ghost driver, Selenium 等库。文中会简要的描述它们之间的关系。希望读者可以参考本文顺利搭建测试环境，少走弯路。
 image_url: "/assets/images/angularjs.jpg"
 ---
-<h3 class="graf--h3"> {{ page.title }}</h3>
+#{{ page.title }}
 
-** 原理 **
+####原理
 
-服务器端的测试会有框架自带的轻量级 server，那么前端的代码如何自动化测试呢？这就需要一个浏览器。前端测试可以运行在主流的浏览器中，如 chrome，ie，firefox 等。还能运行在 headless browser PhantomJS 中。headless 也就是指没有图形界面的，可以用在 vanilla 的测试服务器中。但由于 headless 仅是模拟真实的浏览器，也就意味着它不能验证真实的运行环境，失去了一定的可信度。
+服务器端的测试会有框架自带的轻量级 server，那么前端的代码如何自动化测试呢？这就需要一个浏览器。前端测试可以运行在主流的浏览器中，如 chrome，ie，firefox 等。还能运行在 [headless browser PhantomJS](http://phantomjs.org/) 中。headless 也就是指没有图形界面的，可以用在 vanilla 的测试服务器中。但由于 headless 仅是模拟真实的浏览器，也就意味着它不能验证真实的运行环境，失去了一定的真实性。
 
-有了浏览器不代表测试会自动的跑起来，还需要 browser driver，比如 chrome 的 chrome drive，PhantomJS 的 ghost driver。除了 driver，还需要有调用它们的组件和测试代码。这里起到链接器的组建就是 Selenium 了（文主第一次接触 Selenium 的时候，感觉它好强大，也对那些坚持自动化测试的人尊敬不已）。
+有了浏览器不代表测试会自动的跑起来，还需要 browser driver，比如 chrome 的 chrome drive，PhantomJS 的 [ghost driver](https://github.com/detro/ghostdriver)。除了 driver，还需要有调用它们的组件和测试代码。这里起到链接器的组建就是 [Selenium](http://www.seleniumhq.org/) 了（文主第一次接触 Selenium 的时候，感觉它好强大，也对那些坚持自动化测试的人尊敬不已）。
 
 以下是 unit 和 e2e 测试的简图。Selenium Server 定义了一套 OOP API，所以任何理解这套 API 的 client 都可以发送测试指令给 Selenium，然后 Selenium 再调动目标浏览器运行测试代码。它强大之处在于 Selenium Server 运行在 A， 可以接收从 B 发来的测试指令，然后 Selenium Server 调用 C 处的浏览器来运行测试。
 
-<figure class="graf--figure">
-  <div class="aspectRatioPlaceholder is-locked" style="max-width: 620px; max-height: 388px;">
-    <div class="aspect-ratio-fill" style="padding-bottom: 62.6%;"></div>
-    <img class="graf-image" src="{{ site.url }}/assets/images/karma_test_diagram.png">
-  </div>
-</figure>
+<!-- ![Alt text]({{ site.url }}/assets/images/karma_test_diagram.png) -->
 
-<figure class="graf--figure">
-  <div class="aspectRatioPlaceholder is-locked" style="max-width: 620px; max-height: 388px;">
-    <div class="aspect-ratio-fill" style="padding-bottom: 62.6%;"></div>
-    <img class="graf-image" src="{{ site.url }}/assets/images/protractor_test_diagram.png">
-  </div>
-</figure>
+<!-- ![Alt text]({{ site.url }}/assets/images/protractor_test_diagram.png) -->
 
-** 搭建 unit 测试环境 **
+####搭建 unit 测试环境
 
 首先是安装 karam 相关的库。假定你使用 npm 做包管理，那么把以下的 dependencies 添加到 package.json 里面。
 
@@ -54,7 +44,6 @@ $ npm install
 $ npm install -g karma-cli
 {% endhighlight %}
 
-<br />
 接着是配置 karma。官网的解释很好，[点击查看](http://karma-runner.github.io/0.12/intro/configuration.html)。下面是文主用的配置文件 karma.conf.js，放在测试文件夹下面。这个配置仅包含最基础的设置，详情查看[官网](http://karma-runner.github.io/0.12/config/configuration-file.html)。
 
 {% highlight js %}
@@ -90,9 +79,7 @@ module.exports = function(config){
 $ karma start path_to_your_karma_conf_file/karma.conf.js
 {% endhighlight %}
 
-<br />
-
-** 搭建 e2e 测试环境 **
+####搭建 e2e 测试环境
 
 首先引入相关的库。
 
@@ -114,15 +101,11 @@ npm install。Protractor 需要链接到 Selenium server 才能运行测试，Se
 - 让 Protractor 启动 Selenium server
 - 链接到远程的 Selenium server
 
-<br />
-
 本文关注第二种方法的配置。Selenium 是一个 Java 程序，所以系统需要安装有 Java，以下是在 Mac 上安装的[步骤](https://www.java.com/en/download/help/index_installing.xml)。然后需要下载 seleniumServerJar 文件，这可以通过 protractor 的命令行工具下载。
 
 {% highlight bash %}
 $ ./node_modules/protractor/bin/webdriver-manager update
 {% endhighlight %}
-
-<br />
 
 以下是配置文件 protractor.conf.js， 放在测试文件夹下面。
 
@@ -186,5 +169,3 @@ $ ./node_modules/protractor/bin/protractor ./mobile/tests/protractor.conf
 - [offical docs, 全面](https://github.com/angular/protractor/tree/master/docs)
 - [Selenium WebDriver 原理的介绍](http://www.aosabook.org/en/selenium.html)
 
-<br />
-（完)

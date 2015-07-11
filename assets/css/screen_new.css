@@ -599,6 +599,10 @@ figure {
   height: 100%;
 }
 
+.aspect-ratio-fill{
+  padding-bottom: 30%;
+}
+
 .graf-image, .graf-imageAnchor, .iframeContainer>iframe, .iframeContainer {
   display: block;
   margin: auto;

@@ -34,33 +34,21 @@ title: YUE 声悦
       <div class="block-content">
         <article class="postArticle postArticle--short">
           <a href="{{ post.url }}" class="block-linkHack"></a>
-          <div class="layoutSingleColumn">
-            <section class="postWrapper">
-              <div class="postContent">
+            <section class="postWrapper postContent">
                 <div class="postField postField--body">
-                  <section class=" section--content section--first section--last">
-                    <div class="section-content">
-                      <div class="section-inner layoutSingleColumn">
+              	{% if post.theme_image %} 
+									<figure class="graf--figure graf--first">
+										<div class="aspectRatioPlaceholder is-locked">
+											<div class="aspect-ratio-fill"></div>
+											<img class="graf-image" src="{{ post.theme_image }}">
+										</div>
+									</figure>
+								{% endif %}
 
-                      	{% if post.theme_image %} 
-													<figure name="previewImage" id="previewImage" class="graf--figure postField--croppedHeightPreviewImage graf--first">
-														<div class="aspectRatioPlaceholder is-locked">
-															<div class="aspect-ratio-fill" style="padding-bottom: 30%;">
-															</div>
-															<img class="graf-image" data-image-id="1*S7ZjPV3j_9ZgVA6seCTa4w.jpeg" data-width="3264" data-height="2448" src="{{ post.theme_image }}">
-														</div>
-													</figure>
-												{% endif %}
-
-                        <h2 name="73c1" id="73c1" class="graf--h2 graf--first">{{ post.title }}</h2>
-                        <p name="c296" id="c296" class="graf--p graf--last">{{ post.brief }}</p>
-                      </div>
-                    </div>
-                  </section>
-                </div>
+                <h2 class="typo-h2 graf--h2 graf--first">{{ post.title }}</h2>
+                <p class="graf--p graf--last">{{ post.brief }}</p>
               </div>
             </section>
-          </div>
         </article>
       </div>
     </div> <!-- end streamText -->

@@ -7,19 +7,21 @@ brief: 实现贪吃蛇是一个很好的练习数据结构和增加对算法理�
 image_url: "/assets/images/math.png"
 ---
 
-通过分析这份实现[贪吃蛇的 JS 实现](http://www.codecademy.com/karapuzz/codebits/CNUPkC/edit)，主要的 functions 包括：
+#{{ page.title }}
+
+####步骤
+
+通过分析这份实现 [贪吃蛇的 JS 实现](http://www.codecademy.com/karapuzz/codebits/CNUPkC/edit)，主要的 functions 包括：
 
 - 游戏面板 (game board)
 - 初始化游戏和键盘事件监听
 - setInterval 移动蛇事件
 - 蛇 (snake)，包括初始化，移动，吃苹果和检测 collision
 
-<br />
-以下是简单的流程图:
-<br />
-<div style="">
-    <img src="{{ site.url }}/assets/images/snake_game_flowchart.png">
-</div>
+以下流程图:
+
+![Alt text]({{ site.url }}/assets/images/snake_game_flowchart.png)
+
 
 那么如何移动蛇和检测碰撞呢？文主用 array 来存储蛇的身体部分，蛇的移动就是重置蛇头和删除蛇尾的计算，也就是 array pop 和 unshift。首先是按照当前的方向和旧蛇头计算出新的蛇头，然后实现替换。
 
@@ -58,7 +60,8 @@ function Snake(startX, startY){
 {% highlight javascript %}
 function Snake(startX, startY){
   this.checkCollision = function(){
-    if (this.head().xPos < 0 || this.head().xPos > 392 || this.head().yPos < 0 || this.head().yPos > 392){
+    if (this.head().xPos < 0 || this.head().xPos > 392 || 
+        this.head().yPos < 0 || this.head().yPos > 392){
       endGame();
       clearInterval(gameExecutor);
       alert('crash on border, game end');

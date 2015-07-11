@@ -1,0 +1,46 @@
+
+.posttop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.posttop-logoWrapper {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+img.posttop-logo {
+  max-height: 36px;
+}
+
+.posttop-logo {
+  margin: 14px 0;
+}
+
+.post-content {
+  padding-top: 105px;
+  margin: 0 auto;
+}
+
+.post-inner {
+  position: relative;
+  right: 0%;
+  transition: right 200ms;
+}
+
+.post-layoutSingleColumn {
+  width: 850px;
+  margin: 0 auto;
+}
+
+h1, h2, h3{
+	text-align: center;
+}
+
+.post-footer{
+	margin-top: 30px;
+	margin-bottom: 50px;
+	text-align: right;
+}

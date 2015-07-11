@@ -6,13 +6,9 @@ level: 入门
 brief: 快排学习笔记和 Ruby 实现
 image_url: "/assets/images/math.png"
 ---
-<h3 class="graf--h3"> {{ page.title }}</h3>
+#{{ page.title }}
 
-<br />
-
-在实际中，快排算法被证明是效率最高的对比算法 (Comparison Sort)。最好情况和 merge sort 一样，达到 Θ(nlgn)。最差是 Θ(n^{2})。
-
-<br />
+在实际中，快排算法被证明是效率最高的对比算法 (Comparison Sort)。最好情况和 merge sort 一样，达到 Θ(nlg<sup>n</sup>)。最差是 Θ(n<sup>2</sup>)。
 
 {% highlight ruby %}
 def quicksort(inputs, lo, hi)
