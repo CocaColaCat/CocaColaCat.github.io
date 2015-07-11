@@ -4,23 +4,24 @@ title: YUE 声悦
 ---
 
 {% for post in site.posts %}
-  <div class="block block--inset block--list block--preview js-block js-trackedPost postItem">
+  <div class="block--list block--preview">
 
     <div class="block-postMeta postMeta-previewHeader">
       <div class="u-floatLeft">
 
         <div class="postMetaInline-avatar">
-          <a class="link" title="{{ post.title }}" href="{{ post.url }}">
-            <img src="{{ post.image_url }}" class="avatar-image avatar-image--roundedRectangle u-xs-size32x32 u-sm-size36x36" alt="">
+          <a title="{{ post.title }}" href="{{ post.url }}">
+            <img src="{{ post.image_url }}" class="avatar-image u-sm-size36x36" alt="">
           </a>
         </div>
 
         <div class="postMetaInline-feedSummary">
-          <a class="link link--accent link--darken" title="" href="{{ post.url }}">
+          <a class="link--accent" title="" href="{{ post.url }}">
           	{{ post.tags | array_to_sentence_string }}
           </a>
           <span class="postMetaInline postMetaInline--supplemental">
-            <a class="link link--darken" title="Go to the profile of Room to Read" href="{{ post.url }}" dir="auto">{{ post.level }}</a>
+            {{ post.level }}
+            <!-- <a href="{{ post.url }}"></a> -->
             <span class="middotDivider"></span>
             {{ post.date | date_to_string }}<span></span>
           </span>
@@ -31,13 +32,12 @@ title: YUE 声悦
     </div> <!-- end previewHeader -->
 
     <div class="block-streamText">
-      <div class="block-content">
         <article class="postArticle postArticle--short">
           <a href="{{ post.url }}" class="block-linkHack"></a>
             <section class="postWrapper postContent">
                 <div class="postField postField--body">
               	{% if post.theme_image %} 
-									<figure class="graf--figure graf--first">
+									<figure class="graf--figure">
 										<div class="aspectRatioPlaceholder is-locked">
 											<div class="aspect-ratio-fill"></div>
 											<img class="graf-image" src="{{ post.theme_image }}">
@@ -45,20 +45,19 @@ title: YUE 声悦
 									</figure>
 								{% endif %}
 
-                <h2 class="typo-h2 graf--h2 graf--first">{{ post.title }}</h2>
-                <p class="graf--p graf--last">{{ post.brief }}</p>
+                <h3 class="graf--h3 graf--first">{{ post.title }}</h3>
+                <p class="graf--last">{{ post.brief }}</p>
               </div>
             </section>
         </article>
-      </div>
     </div> <!-- end streamText -->
     
     <div class="block-postMeta postMeta-previewFooter">
       <div class="u-floatLeft">
-        <a class="link link--accent link--darken" href="{{ post.url }}"> 继续阅读</a>
+        <a class="link--accent" href="{{ post.url }}">继续阅读</a>
         <span class="middotDivider"></span>
-        <span class="postMetaInline postMetaInline--bookmark">
-          <span class="readingTime">{{ post.content | number_of_words }} 字</span>
+        <span class="postMetaInline">
+          <span class="">{{ post.content | number_of_words }} 字</span>
         </span>
       </div>
     </div> <!-- end previewFooter -->
