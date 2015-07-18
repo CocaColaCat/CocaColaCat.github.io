@@ -119,13 +119,148 @@ scope=snsapi_base&state=any#wechat_redirect
 
 以下是 WechatAuthCtrl 的处理代码：
 {% highlight js linenos %}
+angular.module('app.account')
+.controller('WechatAuthCtrl', 
+  ['$scope', '$location','AuthService', 'Account', 'AuthToken', 'jwtHelper',
+  function($scope, $location, AuthService, Account, AuthToken, jwtHelper) {
+    // 获取返回参数 code 和 state
+  var code = $location.search().code;
+  var state = $location.search().state;
+ 
+  // 通过 code 来获得签名的 openid
+  var respond = AuthToken.get_wechat_token(code, state);
+  respond.then(function(data){
+    // 处理 2XX 回复，获取授权令牌
+    var auth_token = data.auth_token;
+ 
+    // 获取签名微信 openid
+    var wechat_token = data.wechat_token;
+    var account_id = undefined;
+ 
+    // 如果有授权令牌，存令牌，load 用户信息，转到 state 声明的路由
+    if (auth_token != undefined){
+      account_id = jwtHelper.decodeToken(auth_token).id;
+      Account.getById(account_id).then(function(account) {
+        AuthService.login(data, account);
+        if(state != ""){
+          $location.path(decodeURIComponent(state));
+        }else{
+          $location.path('/projects');
+        }
+      })
+    } 
+    else{
+      // 没有授权令牌，说明没有绑定到微信 openid，存微信令牌用于后面的绑定
+      AuthService.storeWechatToken(wechat_token);
+      $location.path("/login");
+    }
+  },function(data){
+    $location.path("/login");
+  });
+}])
 {% endhighlight %}
 <!-- {% gist CocaColaCat/144ad175c3ce45d40b4f %} -->
 
 以下是 AuthToken.get_wechat_token 的处理代码。 angular 想后台发异步请求，返回 promise。
-
+{% highlight js linenos %}
+angular.module('app.resource')
+.factory('AuthToken', ['BaseResource', '$http', 'API_ENDPOINT', '$q', 
+  function (BaseResource, $http, API_ENDPOINT, $q) {
+    var AuthToken =  BaseResource("auth_token");
+ 
+    AuthToken.get_wechat_token = function(code, state){
+        var deferred = $q.defer();
+        // 构造 url
+        var get_wechat_token_url = 
+          API_ENDPOINT+"/get_wechat_token?code="+code+"&state="+state;
+ 
+        // 发送 get
+        $http.get(get_wechat_token_url).then(function(data){
+            deferred.resolve(data.data);
+        }, function(data){
+            deferred.reject(data.data);
+        })
+        return deferred.promise;
+    }
+    return AuthToken;
+}]);
+{% endhighlight %}
 <!-- {% gist CocaColaCat/a605bc9c6228031a156f %} -->
 
 后台又是如何实现的呢？相比前端代码，后台代码逻辑要简单多。
-
+{% highlight ruby linenos %}
+class Api::V1::AuthTokenController < ApplicationController
+  include Concerns::AuthTokenConcern
+  include Concerns::WechatAuthConcern
+ 
+  def get_wechat_token
+    # 通过 code 来获取 openid
+    openid = App::AuthProcessor.get_wechat_openid params[:code]
+ 
+    if openid
+      # 通过 openid 匹配平台账户
+      binded_account = Authorization.fetch_wechat_account_by openid
+ 
+      # 生成签字的 openid 令牌
+      response_body = { wechat_token: 
+        App::AuthProcessor.get_wechat_token(openid, binded_account) }
+ 
+       # 如果能找到平台账户，生成授权令牌
+      if binded_account
+        response_body.merge!(auth_token: create_jwt(binded_account))
+      end
+ 
+      # 返回
+      render json: response_body, status: :created
+    else
+      # 处理没有 openid 的异常
+    end
+  end
+ 
+end
+ 
+require 'httparty'
+module App
+    class AuthProcessor
+ 
+        # 获取用户的 openid
+        def self.get_wechat_openid(code)
+          response = HTTParty.get get_openid_url(code)
+          JSON.parse(response.body)['openid']
+        end
+ 
+        # 构造获取 openid 的链接
+        def self.get_openid_url(code)
+          url_params = {
+            appid: JSSDKAPPID,
+            secret: get_wechat_api_secret,
+            code: code,
+            grant_type: "authorization_code"
+          }
+          get_openid_url = "https://api.weixin.qq.com/sns/oauth2/access_token?"
+          get_openid_url += concat_params(url_params)
+        end
+ 
+        # 生成签字的 openid 令牌
+        def self.get_wechat_token(openid, binded_account=nil)
+          secret_key = get_app_secret_key
+          payload = { openid: openid }
+          payload.merge!(account_id: binded_account.id) if binded_account
+          JWT.encode(payload, secret_key)
+        end
+ 
+        def self.get_app_secret_key
+          Rails.application.secrets.secret_key_base
+        end
+ 
+        def self.get_wechat_api_secret
+          Rails.application.secrets.wechat_api_secret
+        end
+ 
+        def self.concat_params(params)
+          params.flat_map.inject("") { |result, k_v| 
+            result += "#{k_v.first}=#{k_v.last}&"; result }[0..-2]
+        end
+    end
+{% endhighlight %}
 <!-- {% gist CocaColaCat/190eb432cf8a2e536c96 %} -->

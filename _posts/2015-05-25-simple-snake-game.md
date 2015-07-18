@@ -20,7 +20,7 @@ image_url: "/assets/images/math.png"
 
 点击查看流程图
 <div class="long_img">
-<!-- <img src="{{ site.url }}/assets/images/snake_game_flowchart.png" /> -->
+<img src="{{ site.url }}/assets/images/snake_game_flowchart.png" />
 </div>
 
 
