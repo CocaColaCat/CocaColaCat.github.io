@@ -20,18 +20,11 @@ img.posttop-logo {
 }
 
 .post-content {
-  padding-top: 105px;
-  margin: 0 auto;
-}
-
-.post-inner {
-  position: relative;
-  right: 0%;
-  transition: right 200ms;
+  padding-top: 60px;
 }
 
 .post-layoutSingleColumn {
-  width: 850px;
+  width: 800px;
   margin: 0 auto;
 }
 

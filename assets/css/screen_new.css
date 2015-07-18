@@ -21,6 +21,8 @@ h1, h2, h3, h4, h5, h6, dl, dd, ol, ul, menu, figure, blockquote, p, pre, form {
 
 p{
   font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+  /*font-size: 18px;*/
+  /*line-height: 1.5em;*/
 }
 
 a {

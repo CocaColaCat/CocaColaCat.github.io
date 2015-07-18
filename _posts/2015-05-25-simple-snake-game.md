@@ -18,14 +18,15 @@ image_url: "/assets/images/math.png"
 - setInterval 移动蛇事件
 - 蛇 (snake)，包括初始化，移动，吃苹果和检测 collision
 
-以下流程图:
-
-![Alt text]({{ site.url }}/assets/images/snake_game_flowchart.png)
+点击查看流程图
+<div class="long_img">
+<!-- <img src="{{ site.url }}/assets/images/snake_game_flowchart.png" /> -->
+</div>
 
 
 那么如何移动蛇和检测碰撞呢？文主用 array 来存储蛇的身体部分，蛇的移动就是重置蛇头和删除蛇尾的计算，也就是 array pop 和 unshift。首先是按照当前的方向和旧蛇头计算出新的蛇头，然后实现替换。
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function Snake(startX, startY){
   this.move = function(){
     gameBoard.clearBody();
@@ -57,7 +58,7 @@ function Snake(startX, startY){
 
 在每次移动之后都需要检测碰撞。首先是检测蛇是否碰到了墙壁，然后是蛇是否碰撞到自己身体。一旦检测到碰撞，结束游戏。
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 function Snake(startX, startY){
   this.checkCollision = function(){
     if (this.head().xPos < 0 || this.head().xPos > 392 || 
@@ -67,7 +68,8 @@ function Snake(startX, startY){
       alert('crash on border, game end');
     }
     for (var i = 1; i < this.length(); i++) {
-      if (this.head().xPos == bodyParts[i].xPos && this.head().yPos == bodyParts[i].yPos){
+      if (this.head().xPos == bodyParts[i].xPos && this.head().yPos == bodyParts[i].yPos)
+      {
         snakeCrashHandler();
       }
     };

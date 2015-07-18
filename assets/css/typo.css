@@ -168,13 +168,16 @@ mark {
 
 /* 代码片断 */
 pre, code, pre tt {
-  font-family: Courier, 'Courier New', monospace;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 14px; 
+  line-height: 1.4;
 }
 
 pre {
-  background: #f8f8f8;
+  background: #fcfcfc;
   border: 1px solid #ddd;
-  padding: 1em 1.5em;
+  border-radius: 4px;
+  padding: 0.5em 0.1em;
   display: block;
   -webkit-overflow-scrolling: touch;
 }

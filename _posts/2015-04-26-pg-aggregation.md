@@ -13,7 +13,7 @@ image_url: "/assets/images/postgresql.jpeg"
 
 无论是应用开发人员还是运维人员，都会面对提取统计数据的需求。比如提取最近 7 天/周/月，每 天/周/月 的报名人数 (某事件发生的次数) 是多少。碰到这样的问题，可能会很直观的采用如下解决方案：
 
-{% highlight ruby %}
+{% highlight ruby linenos%}
 # 提取最近 7 周的报名人数
 def get_enrollment_count_by_weeks
   weeks = 7
@@ -33,7 +33,7 @@ end
 通过 PostgreSQL 提供的 [generate_series](http://www.postgresql.org/docs/current/interactive/functions-srf.html), [date_trunc](http://www.postgresql.org/docs/9.4/static/functions-datetime.html) functions 可以达到优化目的。首先是一些背景知识解释。
 >generate_series: Generate a series of values, from start to stop with a step size of one (按照自定的规则生成新表格，如生成一个最近七天日期的单表, 间隔 2 steps 获取 1 到 10 整数单表)。
 
-{% highlight ruby %}
+{% highlight ruby linenos%}
 sql = "SELECT generate_series(-6, 0) + current_date as day"
 puts (ActiveRecord::Base.connection.execute sql).to_a
 
@@ -70,7 +70,7 @@ puts (ActiveRecord::Base.connection.execute sql).to_a
 ####优化
 为什么要使用这些 functions? 回到我们的问题，把提取最近 7 周每周的报名人数的问题拆分为以下的小问题：先拿到最近七周的开始时间的日期，然后按照每周把所有的报名分组，最后算每组的总数。
 
-{% highlight ruby %}
+{% highlight ruby linenos%}
 # 算出最近七周的开始时间的日期
 sql = <<-SQL
   SELECT (date_trunc('week', now()))::date - s.a AS start_date FROM 
@@ -90,7 +90,7 @@ puts (ActiveRecord::Base.connection.execute sql).to_a
 
 然后
  
-{% highlight ruby %}
+{% highlight ruby linenos%}
 # 按每周把所有的报名分组，算每组的总数
 sql = <<-SQL
   SELECT series.start_date, count(id) as approval_count

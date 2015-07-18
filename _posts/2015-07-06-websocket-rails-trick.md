@@ -12,7 +12,7 @@ image_url: "/assets/images/rails.jpeg"
 ####问题
 消耗资源大且慢的系统业务一般会做异步的处理，然后再通过 websocket 推送回给前台。
 [websocket-rails](https://github.com/websocket-rails/websocket-rails) 这个 gem 就提供了这样的封装。它的配置很简单，如下:
-{% highlight ruby %}
+{% highlight ruby linenos %}
 if Rails.env.development?
   WebsocketRails.setup do |config|
     config.standalone = false
@@ -36,7 +36,7 @@ end
 
 假设你有一个 sidekiq 的 worker 如下
 
-{% highlight ruby %}
+{% highlight ruby linenos%}
 class GetThingDoneWorker
   include Sidekiq::Worker
   sidekiq_options :retry => 1
@@ -49,7 +49,7 @@ end
 {% endhighlight %}
 
 在其他的代码中调用这个 worker如下:
-{% highlight ruby %}
+{% highlight ruby linenos%}
 GetThingDoneWorker.perform_asyn
 {% endhighlight %}
 

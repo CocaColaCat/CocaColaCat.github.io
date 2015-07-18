@@ -10,7 +10,7 @@ image_url: "/assets/images/math.png"
 
 在实际中，快排算法被证明是效率最高的对比算法 (Comparison Sort)。最好情况和 merge sort 一样，达到 Θ(nlg<sup>n</sup>)。最差是 Θ(n<sup>2</sup>)。
 
-{% highlight ruby %}
+{% highlight ruby linenos%}
 def quicksort(inputs, lo, hi)
   if (lo < hi)
     mi = partition inputs, lo, hi

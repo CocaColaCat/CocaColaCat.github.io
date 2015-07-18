@@ -59,18 +59,57 @@ image_url: "/assets/images/wechat.jpg"
 以下是客户端的代码。假设用户请求项目列表 （需要授权），run block 会被触发，检测本地是否有授权令牌。
 
 <!-- {% gist CocaColaCat/d76ab10a4ebf08782a99 %} -->
+{% highlight js linenos %}
+angular.module('app',[])
+.config([, function(){
+ 
+   //项目列表路由
+   .state('projects',{
+      url:'/projects',
+      templateUrl:"app/project/ProjectList.html",
+      controller:"ProjectListCtrl",
+      access:{requireLogin:true}
+    })
+ 
+    .state('get_wechat_token',{
+      url:"/get_wechat_token?code",
+      controller:"WechatAuthCtrl",
+      access:{requireLogin:false}
+    })
+ 
+}])
+.run(["$rootScope", "$window", "$state", "AuthService", 
+  function($rootScope, $window, $state, AuthServic) {
+    $rootScope.$on("$stateChangeStart", 
+      function(event, nextRoute, currentRoute){
+        // 请求的路径要求登录同时没有授权令牌
+        if( nextRoute.access.requireLogin &&
+            !AuthService.is_logined() &&
+            !AuthService.initCheckToken()) {
+          event.preventDefault();
+          // 只针对微信浏览器
+          if (AuthService.isWechatBrowser()){ 
+           // 尝试通过 openid 换取用户登录令牌
+           $window.location.href = AuthService.getWechatAuthorizeUrl();
+          }else{
+            $location.path("/login");
+          }
+        }
+    });
+}
+{% endhighlight %}
 
 $window.location.href 会触发浏览器改变当前 location，同时发起访问。
+调用 
 
-{% highlight bash %}
-调用 $window.location.href = AuthService.getWechatAuthorizeUrl() 
-会如下返回微信 OAuth2 授权 URL
-https://open.weixin.qq.com/connect/oauth2/authorize?appid=YOUR_APP_ID&
+{% highlight bash linenos %}
+$window.location.href = AuthService.getWechatAuthorizeUrl() 
+{% endhighlight %}
+会返回如下微信 OAuth2 授权 URL
+>https://open.weixin.qq.com/connect/oauth2/authorize?appid=YOUR_APP_ID&
 redirect_uri=YOUR_CALL_BACK_URL&
 response_type=code&
 scope=snsapi_base&state=any#wechat_redirect
-{% endhighlight %}
-
 
 请求链接需要携带 callback_url, 这是用于当授权结束时，微信知道要往哪里返回授权结果。
 这里我们使用的是前端的路由 (为什么要是前端路由)。假设 callback url 是 
@@ -79,13 +118,14 @@ scope=snsapi_base&state=any#wechat_redirect
 那么当微信授权结束（返回code和state）参数，前端 AngularJS 路由表会把 callback 导到 WechatAuthCtrl 处理。微信 code 是用来获取 openid 和 access_token 的令牌，具体参见[文档](http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html)。
 
 以下是 WechatAuthCtrl 的处理代码：
-
-{% gist CocaColaCat/144ad175c3ce45d40b4f %}
+{% highlight js linenos %}
+{% endhighlight %}
+<!-- {% gist CocaColaCat/144ad175c3ce45d40b4f %} -->
 
 以下是 AuthToken.get_wechat_token 的处理代码。 angular 想后台发异步请求，返回 promise。
 
-{% gist CocaColaCat/a605bc9c6228031a156f %}
+<!-- {% gist CocaColaCat/a605bc9c6228031a156f %} -->
 
 后台又是如何实现的呢？相比前端代码，后台代码逻辑要简单多。
 
-{% gist CocaColaCat/190eb432cf8a2e536c96 %}
+<!-- {% gist CocaColaCat/190eb432cf8a2e536c96 %} -->

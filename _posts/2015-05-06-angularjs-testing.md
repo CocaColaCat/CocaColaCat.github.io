@@ -24,7 +24,7 @@ image_url: "/assets/images/angularjs.jpg"
 
 首先是安装 karam 相关的库。假定你使用 npm 做包管理，那么把以下的 dependencies 添加到 package.json 里面。
 
-{% highlight js %}
+{% highlight js linenos%}
 {
   "name": "MMT",
   "version": "0.0.0",
@@ -39,14 +39,14 @@ image_url: "/assets/images/angularjs.jpg"
 
 然后运行，后一条指令是按照 karam 的 cli，这样就可以直接调用 karma 而不需要路径。
 
-{% highlight bash %}
+{% highlight bash linenos%}
 $ npm install
 $ npm install -g karma-cli
 {% endhighlight %}
 
 接着是配置 karma。官网的解释很好，[点击查看](http://karma-runner.github.io/0.12/intro/configuration.html)。下面是文主用的配置文件 karma.conf.js，放在测试文件夹下面。这个配置仅包含最基础的设置，详情查看[官网](http://karma-runner.github.io/0.12/config/configuration-file.html)。
 
-{% highlight js %}
+{% highlight js linenos%}
 module.exports = function(config){
   config.set({
     autoWatch : true, //自动监测文件变化
@@ -75,7 +75,7 @@ module.exports = function(config){
 
 这样单元测试的环境就算配置好了。本文就不给出测试例子，请参考 AngularJS 的官网[例子](https://docs.angularjs.org/guide/unit-testing)。最后运行测试
 
-{% highlight bash %}
+{% highlight bash linenos%}
 $ karma start path_to_your_karma_conf_file/karma.conf.js
 {% endhighlight %}
 
@@ -83,7 +83,7 @@ $ karma start path_to_your_karma_conf_file/karma.conf.js
 
 首先引入相关的库。
 
-{% highlight js %}
+{% highlight js linenos%}
 {
   "name": "MMT",
   "version": "0.0.0",
@@ -103,13 +103,13 @@ npm install。Protractor 需要链接到 Selenium server 才能运行测试，Se
 
 本文关注第二种方法的配置。Selenium 是一个 Java 程序，所以系统需要安装有 Java，以下是在 Mac 上安装的[步骤](https://www.java.com/en/download/help/index_installing.xml)。然后需要下载 seleniumServerJar 文件，这可以通过 protractor 的命令行工具下载。
 
-{% highlight bash %}
+{% highlight bash linenos%}
 $ ./node_modules/protractor/bin/webdriver-manager update
 {% endhighlight %}
 
 以下是配置文件 protractor.conf.js， 放在测试文件夹下面。
 
-{% highlight js %}
+{% highlight js linenos%}
 exports.config = {
   // 存放 seleniumServerJar 的路径
   seleniumServerJar: '../../node_modules/protractor/selenium/
@@ -152,7 +152,7 @@ exports.config = {
 
 这样 e2e 测试的环境就算配置好了。本文就不给出测试例子，请参考官网[例子](这样单元测试的环境就算配置好了。本文就不给出测试例子，请参考 AngularJS 的官网[例子](https://docs.angularjs.org/guide/unit-testing)。 最后运行测试
 
-{% highlight bash %}
+{% highlight bash linenos%}
 $ ./node_modules/protractor/bin/protractor ./mobile/tests/protractor.conf
 {% endhighlight %}
 
