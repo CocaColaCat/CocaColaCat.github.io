@@ -13,72 +13,94 @@
 <body style="opacity: 1; transition: -webkit-transform 0.8s ease;">
 <div class="slides">
     <slides id="container">
-      <slide class="slide far-past pagedown" data-transition="move">
-        <section class="slide-wrapper">
-          <article class="flexbox vcenter">
-            <h1>我是 Melody</h1>
-            <h2>现在爱编程，爱看书</h2>
-          </article>
-        </section>
-      </slide>
+        <slide class="slide" data-transition="move"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>NodePPT</h1>
+<h2>这可能是迄今为止最好的网页版PPT</h2>
+<p><small style="vertical-align:middle;display:inline-block">
+                <iframe src="./assets/black_files/github-btn(2).html" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20" style="width:110px;height:20px;  background-color: transparent;"></iframe>
+                <iframe src="./assets/black_files/github-btn(1).html" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20" style="width:110px;height:20px;  background-color: transparent;"></iframe>
+                <iframe src="./assets/black_files/github-btn.html" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="20" style="width:170px;height:20px;  background-color: transparent;"></iframe>
+            </small>
+</p>
 
-      <slide class="slide current pagedown" data-transition="move">
-        <section class="slide-wrapper">
-          <hgroup>
-            <h2>程序媛诞生.始于大学毕业</h2>
-          </hgroup>
-          <article>
-            <ul class="rollIn">
-              <li class="tobuild" data-index="0">大学‘胡乱’ 学了4年，法律，管理，网络，产品，就是不曾写过代码</li>
-              <li class="tobuild" data-index="1">毕设‘胡乱’选了做个图书馆系统为题目</li>
-              <li class="tobuild" data-index="2">不想很喜欢那种完成一个系统的成就感</li>
-              <li class="tobuild" data-index="2">然后义无反顾的硕士转学计算机</li>
-              <li class="tobuild" data-index="3">毕业，碰到一个有爱团队，爱书，爱干净的代码，爱沟通</li>
-              <li class="tobuild" data-index="4">
-                <blockquote>敏捷开发，测试先行，持续集成，自动部署</blockquote>－软件开发比我想的要复杂得多</li>
-              <li class="tobuild" data-index="5">于是读了不少书，参加了不少 conferences</li>
-              <li class="tobuild" data-index="6">现在代码写得不错，测试覆盖很好，新功能上线了还可以安心睡觉 😪</li>
-            </ul>
-          </article>
-        </section>
-      </slide>
+</article></section></slide>
+<slide class="slide" data-transition="move"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>NodePPT样式展示</h1>
+<blockquote>
+<p>nodePPT 让每个人都爱上做分享！</p>
+</blockquote>
 
-      <slide class="slide" data-transition="move">
-        <section class="slide-wrapper">
-          <hgroup>
-            <h2>我会用几种‘语言’说 'Hello World'</h2>
-          </hgroup>
-          <article>
-<pre><code class="markdown hljs ">
-/<span class="hljs-bullet">* Ruby（工作用语）*</span>/
-def say; puts 'Hello World'; end
+</article></section></slide>
+<slide class="slide" data-transition="move"><section class="slide-wrapper"><hgroup>
+<h2>为什么选择nodePPT</h2>
 
-/<span class="hljs-bullet">* C#（曾经工作用语）*</span>/
-using System;
-namespace HelloWorld {
-  class Program {
-    static void Main(string[] args) {
-      Console.WriteLine("Hello,world!");
-      Console.ReadKey(); } } }
+</hgroup><article>
 
-/<span class="hljs-bullet">* Java（学生时代用语）*</span>/
-public class HelloWorld {
-  public static void main(String[] args) {
-    System.out.println("Hello World!"); } }
+<ul class="rollIn">
+<li class="builded" data-index="0">基于GFM的markdown语法编写</li>
+<li class="builded" data-index="1">支持html混排，再复杂的demo也可以做！</li>
+<li class="builded" data-index="2">导出网页或者pdf更容易分享</li>
+<li class="builded" data-index="3">支持18种转场动画，可以设置单页动画</li>
+<li class="builded" data-index="4">支持单页背景图片</li>
+<li class="builded" data-index="5">多种模式：overview模式，双屏模式，socket远程控制，摇一摇换页</li>
+<li class="builded" data-index="6">可以使用画板，可以使用note做备注</li>
+<li class="builded" data-index="7">支持语法高亮，自由选择highlight样式</li>
+<li class="builded" data-index="8">可以单页ppt内部动画，单步动画</li>
+<li class="builded" data-index="9">支持进入/退出回调，做在线demo很方便</li>
+</ul>
 
-/<span class="hljs-bullet">* javascript（ Web 世界的‘官方语言’） *</span>/
-console.log('Hello World');
+</article></section></slide>
+<slide class="slide" data-transition="move"><section class="slide-wrapper"><hgroup>
+<h2>基本语法指南</h2>
 
-/<span class="hljs-bullet">* C（其实我和它不熟）*</span>/
+</hgroup><article>
+
+<pre><code class="markdown hljs ">/<span class="hljs-bullet">* 先写总的配置 *</span>/
+title: 这是title，网页名称
+speaker: 演讲者名称
+url: https://github.com/ksky521/nodePPT
+transition: 全局转场动画
+files: 引入的js和css文件，多个以半角逗号隔开
+hightStyle: 代码高亮样式，默认monokai_sublime
+
+/<span class="hljs-bullet">* 以[slide] 隔开每个ppt页面 *</span>/
+[slide]
+<span class="hljs-header">## 二级标题</span>
+这里写内容即可
+
+[slide]
 ...
-
 </code>
 </pre>
-          </article>
-        </section>
-      </slide>
+</article></section></slide>
+<slide class="slide fill pagedown far-past" style="background-image:url(&#39;/img/bg1.png&#39;)" data-transition="move"><section class="slide-wrapper"><article class="flexbox vleft">
+<h1>支持单页添加背景图片</h1>
+<h2>使用方法：[slide style="background-image:url('/img/bg1.png')"]</h2>
 
-<!-- <slide class="slide pagedown next" data-transition="move"><section class="slide-wrapper"><div class="subSlide tobuild" data-index="0"><hgroup>
+</article></section></slide>
+<slide class="slide pagedown past" data-transition="move"><section class="slide-wrapper"><hgroup>
+<h2>支持.class/#id/自定义属性样式</h2>
+
+</hgroup><article>
+
+<pre><code class="html hljs ">使用：.class{:.class}
+使用：#id{:#id}
+组合使用：{:.class.class2 width="200px"}
+父元素样式使用&amp;：{:&amp;.class}
+</code></pre>
+
+</article></section></slide>
+<slide class="slide pagedown current" data-transition="move"><section class="slide-wrapper"><hgroup>
+<h2>主页面样式</h2>
+<h3>----是上下分界线</h3>
+
+</hgroup><article>
+
+<p>nodeppt是基于nodejs写的支持 <strong>Markdown!</strong> 语法的网页PPT</p>
+<p>nodeppt：<a href="https://github.com/ksky521/nodePPT" target="_blank">https://github.com/ksky521/nodePPT</a></p>
+
+</article></section></slide>
+<slide class="slide pagedown next" data-transition="move"><section class="slide-wrapper"><div class="subSlide tobuild" data-index="0"><hgroup>
 <h2>这是一个列表，同时也是subSlide页面</h2>
 
 </hgroup><article>
@@ -105,47 +127,129 @@ console.log('Hello World');
 <li class="tobuild" data-index="7">数字列表</li>
 </ol>
 
-</article></div></section></slide> -->
+</article></div></section></slide>
+<slide class="slide far-next pagedown" data-transition="move"><section class="slide-wrapper"><hgroup>
+<h2>列表渐显动画：fadeIn</h2>
 
-<!--       <slide class="slide far-next pagedown" data-transition="move">
-        <section class="slide-wrapper"><hgroup>
-        <h2>做过的项目</h2></hgroup>
-        <article>
-          <ul class="fadeIn">
-          <li class="tobuild" data-index="0">列表支持渐显动画哦<ul>
-          <li>使用方法</li>
-          <li>markdown列表第一条加上：{:&amp;.动画类型}</li>
-          </ul>
-          </li>
-          <li class="tobuild" data-index="1">动画类型<ul>
-          <li>fadeIn</li>
-          <li>rollIn</li>
-          <li>bounceIn</li>
-          <li>moveIn</li>
-          <li>zoomIn</li>
-          </ul>
-          </li>
-          </ul>
-          </article>
-        </section>
-      </slide> -->
-
-<slide class="slide" data-transition="move">
-<section class="slide-wrapper"><hgroup>
-<h2>说说 Ruby</h2>
 </hgroup><article>
-<p><span class="text-danger">松本行弘</span> <span class="text-success"> DHH</span><span class="text-primary"></span></p>
-<p><span class="text-warning">REST API</span><span class="text-info"> RoR</span><span class="text-white"> TDD</span><span class="text-dark"> 连续集成</span></p>
-<p><span class="blue">敏捷</span><span class="blue2"> </span><span class="blue3"></span><span class="gray"> </span><span class="gray2"> </span><span class="gray3"></span></p>
-<p><span class="text-white">Linux</span><span class="red2"> Windows</span><span class="red3"> Docker</span></p>
-<p><span class="yellow">Github</span><span class="yellow2"> Twitter</span><span class="yellow3"> Heroku</span><span class="green"> 薄荷</span>
-<span class="blue"><a href="http://www.adachina.cn/#header"> 其他</a></span>
-<span class="green3"></span></p>
-<p><mark>优雅</mark><span class="label label-info"> 快速产品雏形</span><span class="label label-warning"> 性能</span></p>
-</article></section></slide>
 
+<ul class="fadeIn">
+<li class="tobuild" data-index="0">列表支持渐显动画哦<ul>
+<li>使用方法</li>
+<li>markdown列表第一条加上：{:&amp;.动画类型}</li>
+</ul>
+</li>
+<li class="tobuild" data-index="1">动画类型<ul>
+<li>fadeIn</li>
+<li>rollIn</li>
+<li>bounceIn</li>
+<li>moveIn</li>
+<li>zoomIn</li>
+</ul>
+</li>
+</ul>
+
+</article></section></slide>
 <slide class="slide" data-transition="move"><section class="slide-wrapper"><hgroup>
-<h2>说说读过的书</h2>
+<h2>列表渐显动画：zoomIn</h2>
+
+</hgroup><article>
+
+<ul class="zoomIn">
+<li class="tobuild" data-index="0">列表支持渐显动画哦</li>
+<li class="tobuild" data-index="1">动画类型<ul>
+<li>fadeIn</li>
+<li>rollIn</li>
+<li>bounceIn</li>
+<li>moveIn</li>
+<li>zoomIn</li>
+</ul>
+</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide" data-transition="move"><section class="slide-wrapper"><hgroup>
+<h2>列表渐显动画：bounceIn</h2>
+
+</hgroup><article>
+
+<ul class="bounceIn">
+<li class="tobuild" data-index="0">列表支持渐显动画哦</li>
+<li class="tobuild" data-index="1">动画类型<ul>
+<li>fadeIn</li>
+<li>rollIn</li>
+<li>bounceIn</li>
+<li>moveIn</li>
+<li>zoomIn</li>
+</ul>
+</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide" data-transition="move"><section class="slide-wrapper"><hgroup>
+<h2>表格示例</h2>
+<h3>市面上主要的css预处理器：Less\Sass\Stylus</h3>
+
+</hgroup><article>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center">Less</th>
+<th style="text-align:right">Sass</th>
+<th>Stylus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">环境</td>
+<td style="text-align:center">js/nodejs</td>
+<td style="text-align:right">Ruby(这列右对齐)</td>
+<td class="highlight">nodejs(高亮)</td>
+</tr>
+<tr>
+<td style="text-align:left">扩展名</td>
+<td style="text-align:center">.less</td>
+<td style="text-align:right">.scss/.sass</td>
+<td>.styl</td>
+</tr>
+<tr>
+<td style="text-align:left">特点</td>
+<td style="text-align:center">老牌，用户多，支持js解析</td>
+<td style="text-align:right">功能全，有成型框架，发展快</td>
+<td>语法多样，小众</td>
+</tr>
+<tr>
+<td style="text-align:left">案例/框架</td>
+<td style="text-align:center"><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></td>
+<td style="text-align:right"><a href="http://beta.compass-style.org/" target="_blank">Compass</a> <a href="http://getbootstrap.com/css/#sass" target="_blank">Bootstrap</a> <a href="http://foundation.zurb.com/" target="_blank">Foundation</a> <a href="http://bourbon.io/" target="_blank">Bourbon</a> <a href="https://github.com/jsw0528/base.sass" target="_blank">Base.Sass</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</article></section></slide>
+<slide class="slide" data-transition="move"><section class="slide-wrapper"><hgroup>
+<h2>text</h2>
+
+</hgroup><article>
+
+<p><span class="text-danger">.text-danger</span> <span class="text-success">.text-sucess</span><span class="text-primary">.text-primary</span></p>
+<p><span class="text-warning">.text-warning</span><span class="text-info">.text-info</span><span class="text-white">.text-white</span><span class="text-dark">.text-dark</span></p>
+<p><span class="blue">.blue</span><span class="blue2">.blue2</span><span class="blue3">.blue3</span><span class="gray">.gray</span><span class="gray2">.gray2</span><span class="gray3">.gray3</span></p>
+<p><span class="red">.red</span><span class="red2">.red2</span><span class="red3">.red3</span></p>
+<p><span class="yellow">.yellow</span><span class="yellow2">.yellow2</span><span class="yellow3">.yellow3</span><span class="green">.green</span><span class="green2">.green2</span><span class="green3">.green3</span></p>
+
+</article></section></slide>
+<slide class="slide" data-transition="move"><section class="slide-wrapper"><article>
+<h2>label and link</h2>
+<p><span class="label label-primary">.label.label-primary</span><span class="label label-warning">.label.label-warning</span><span class="label label-danger">.label.label-danger</span><span class="label label-default">.label.label-default</span><span class="label label-success">.label.label-success</span><span class="label label-info">.label.label-info</span></p>
+<p><a href="http://qdemo.sinaapp.com/?theme=dark#">link style</a> <mark>mark</mark></p>
+
+</article></section></slide>
+<slide class="slide" data-transition="move"><section class="slide-wrapper"><hgroup>
+<h2>blockquote</h2>
 
 </hgroup><article>
 
@@ -158,7 +262,6 @@ console.log('Hello World');
 </blockquote>
 
 </article></section></slide>
-
 <slide class="slide" data-transition="move"><section class="slide-wrapper"><hgroup>
 <h2>buttons</h2>
 
@@ -515,9 +618,7 @@ console.log('Hello World');
     </div>
     <button class="fa fa-bars" id="_btn-bar" data-toggle="fa fa-close"></button>
 </div>
-
 <script src="./assets/black_files/mix.0.3.0.min.js"></script>
-
 <script>
 var base = location.protocol + '//' + location.host;
 
