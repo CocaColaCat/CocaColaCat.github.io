@@ -55,14 +55,23 @@ class Tree
   end
 
   def minumun
-    return root
-    if root.left
-
+    return nil if root.nil?
+    return root.value if (root.left == nil) || (root.right == nil)
+    node = root
+    while node && node.left
+      node = node.left
     end
+    node.value
   end
 
   def maximun
-
+    return nil if root.nil?
+    return root.value if (root.left == nil) || (root.right == nil)
+    node = root
+    while node && node.right
+      node = node.right
+    end
+    node.value
   end
 
   def successor
@@ -128,9 +137,11 @@ tree.insert node_12
 tree.insert node_13
 
 # p tree
-# p tree.root
+# p tree.root.left
 # tree.inorder_walk
+p tree.minumun
+p tree.maximun
 # p tree.root
-p tree.search 255
+# p tree.search 255
 # tree.walk node_4
 
