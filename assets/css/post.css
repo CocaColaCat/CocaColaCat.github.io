@@ -37,3 +37,14 @@ h1, h2, h3{
 	margin-bottom: 50px;
 	text-align: right;
 }
+
+#element_to_pop_up { 
+  background-color: white;
+  margin-top: 20px
+  width: 600px;
+  display:none; 
+}
+
+#my-button{
+  
+}

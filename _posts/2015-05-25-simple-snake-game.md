@@ -18,11 +18,10 @@ image_url: "/assets/images/math.png"
 - setInterval 移动蛇事件
 - 蛇 (snake)，包括初始化，移动，吃苹果和检测 collision
 
-点击查看流程图
-<div class="long_img">
-<img src="{{ site.url }}/assets/images/snake_game_flowchart.png" />
+简单的流程图可以 <a id="my-button">点击</a> 查看。
+<div id="element_to_pop_up">
+  <img src="{{ site.url }}/assets/images/snake_game_flowchart.png" />
 </div>
-
 
 那么如何移动蛇和检测碰撞呢？文主用 array 来存储蛇的身体部分，蛇的移动就是重置蛇头和删除蛇尾的计算，也就是 array pop 和 unshift。首先是按照当前的方向和旧蛇头计算出新的蛇头，然后实现替换。
 
