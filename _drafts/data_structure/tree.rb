@@ -33,8 +33,60 @@ class Tree
     walk root
   end
 
-  def search(value)
+  def search(value,start_from=nil)
+    node = start_from || root
+    return node if node.nil? || (value == node.value)
+    next_node = node
+    while next_node
+      break if next_node.value == value
+      if next_node.value < value
+        next_node = next_node.right
+      else next_node.value > value
+        next_node = next_node.left
+      end
+    end
+    next_node
+
+    # if value < node.value
+    #   search(value, node.left)
+    # else
+    #   search(value, node.right)
+    # end
   end
+
+  def minumun
+    return nil if root.nil?
+    return root.value if (root.left == nil) || (root.right == nil)
+    node = root
+    while node && node.left
+      node = node.left
+    end
+    node.value
+  end
+
+  def maximun
+    return nil if root.nil?
+    return root.value if (root.left == nil) || (root.right == nil)
+    node = root
+    while node && node.right
+      node = node.right
+    end
+    node.value
+  end
+
+  def successor
+
+  end
+
+  def predecessor
+
+  end
+
+  def delete(value)
+
+  end
+
+  private
 
   def walk(node)
     if node != nil
@@ -65,6 +117,9 @@ node_7 = Node.new(100)
 node_8 = Node.new(-2)
 node_9 = Node.new(-17)
 node_10 = Node.new(-55)
+node_11 = Node.new(11)
+node_12 = Node.new(255)
+node_13 = Node.new(-29)
 
 tree = Tree.new
 tree.insert node_5
@@ -77,9 +132,16 @@ tree.insert node_7
 tree.insert node_8
 tree.insert node_9
 tree.insert node_10
+tree.insert node_11
+tree.insert node_12
+tree.insert node_13
 
 # p tree
-# p tree.root
+# p tree.root.left
 # tree.inorder_walk
-tree.walk node_4
+p tree.minumun
+p tree.maximun
+# p tree.root
+# p tree.search 255
+# tree.walk node_4
 
