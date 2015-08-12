@@ -56,7 +56,9 @@
       /* end reset */
 
       body{
-        background-color: #ededed;
+        /*background-color: #ededed;*/
+        /* bg 6, 7 are the best */
+        background-image: url("../assets/images/gift_selection/bg-7.png");
         /*font-size: 25px;*/
         font: 300 1.0em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
       }
@@ -87,6 +89,8 @@
         border-radius: 10px;
         /*text-decoration: underline;*/
         box-shadow: 1px 1px 2px #888888;
+        position: relative;
+        overflow: hidden;
         /*color: #666;*/
       }
       .card-content{
@@ -115,17 +119,16 @@
       }
       .sixth{
         background-color: #FFE4E1;
-        border: 1px #e6e6e6 solid;
+        /*border: 1px #e6e6e6 solid;*/
       }
       .clear{
         clear:both;
       }
-      .selected_first{
+/*      .selected_first{
         background-image: url(../assets/images/gift_selection/lego.jpg);
-        /*color: white;*/
-      }
+      }*/
       .selected{
-        background-color:#000000;
+        background-color: #000000;
         background-color:rgba(0,0,0,0.3);
         width: 140px;
         height: 140px;
@@ -135,10 +138,28 @@
         color: white;
         border-radius: 10px;
         letter-spacing: 4px;
+        z-index: 3;
+        position: relative;
         /*box-shadow: 1px 1px 2px #888888;*/
       }
       a{
         text-decoration: none;
+      }
+      .gift-card img{
+        /*display: none;*/
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 2;
+        width: 140px;
+        height: 140px;
+        transition-property:top 600ms ease-out 0;
+        /* Firefox 4 */
+        -moz-transition:top 600ms ease-out 0s;
+        /* Safari and Chrome */
+        -webkit-transition:top 600ms ease-out 0s;
+        /* Opera */
+        -o-transition:top 600ms ease-out 0s;
       }
 /*      a:hover{
         color: white;
@@ -150,11 +171,11 @@
     <div class='wrapper'>
       <div class='header'>
         <p>时间好像蛋糕一样，吃着吃着就没了~</p>
-        <!-- <p>认识那么久，我就送过你一次礼物，好惭愧</p> -->
         <p></p>
       </div>
       <div class='cards'>
         <div class='gift-card first'>
+          <img id="first" src="../assets/images/gift_selection/lego-3.jpg" />
           <div class="card-content">
             <a>酷玩</a>
           </div>
@@ -182,10 +203,17 @@
 
     <script type="text/javascript">
       $(".first").hover(function(){
-          $(this).addClass( "selected_first" );
           $(this).children('div').addClass("selected");
+          $(this).find("#first").css("top", "0");
         }, function(){
-          $(this).removeClass( "selected_first" );
+          // setTimeout(function(){
+          //   var s = $('.selected');
+          //   s.animate({opacity: 0}, function(){  
+          //     s.removeClass("selected");
+          //     s.css("opacity", 1);   
+          //   });               
+          // }, 600);
+          $(this).find("#first").css("top", "100%");
           $(this).children('div').removeClass("selected");
       });
 
