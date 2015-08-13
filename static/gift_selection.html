@@ -4,7 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>礼物</title>
-    <style type="text/css" src="../assets/css/reset.css"></style>
+    <link rel="stylesheet" type="text/css" href="../assets/css/reset.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../assets/css/typo.css"> -->
     <style type="text/css">
       body{
         /*background-color: #ededed;*/
@@ -14,13 +15,10 @@
       .wrapper{
         margin-left: 20%;
         width: 80%;
-        /*border: 1px red solid;*/
-        /*height: 100%;*/
       }
       .cards{
         margin-top: 100px;
         width: 310px;
-        /*border: 1px lightblue solid;*/
         float: left;
       }
       .gift-card{
@@ -108,21 +106,18 @@
         height: 600px;
         border-radius: 10px;
         background-color: white;
+        padding-top: 10px;
       }
       .popup .botton{
         position: absolute;
-        right: -10px;
-        width: 40px;
-        background-color: grey;
-        top: -10px;
-        text-align: center;
-        font-size: 24px;
-        color: white;
-        border-radius: 2px;
+        right: -30px;
+        top: -30px;
         cursor: pointer;
       }
-      .popup .botton:hover{
-        background-color: pink;
+      .popup .cupcake:hover{
+        opacity: 1;
+        filter: alpha(opacity=100);
+        /*background-color: pink;*/
       }
       .popup .content{
         max-height: 590px;
@@ -132,10 +127,68 @@
       a:hover{
         text-decoration: underline;
       }
-
+      .cupcake{
+        width: 60px;
+        opacity: 0.8;
+        filter: alpha(opacity=80); /* For IE8 and earlier */
+      }
+      .item{
+        width: 950px;
+        margin: auto auto 50px auto;
+        border-bottom: 1px #F5F5F5 solid;
+        /*background-color: beige;*/
+        padding: 20px 0 30px 0px;
+      }
+      .item-img-wrap{
+        width: 280px;
+        /*border: 1px solid black;*/
+        /*background-color: beige;*/
+        float: left;
+        box-shadow: 0px 0px 8px 1px #D6D6D6;
+      }
+      .item-img{
+        width: 260px;
+        margin: 10px 20px 0px 10px;
+        /*background-color: beige;*/
+      }
+      .intro{
+        /*border: 1px solid black;*/
+        float: left;
+        margin-left: 30px;
+        width: 640px;
+      }
+      .item-img-wrap-right{
+        width: 280px;
+        /*border: 1px solid black;*/
+        float: left;
+        margin-left: 30px;
+        box-shadow: 0px 0px 8px 1px #D6D6D6;
+      }
+      .intro-right{
+        float: left;
+        width: 640px;
+      }
+      h1{
+        font-size: 2em;
+      }
+      h3{
+        font-size: 1.6em;
+      }
+      h4{
+        font-size: 1.4em;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        margin-top: 1.2em;
+        margin-bottom: 0.6em;
+        line-height: 1.35;
+      }
+      p{
+        /*margin-bottom: 1.2em*/
+      }
     </style>
   </head>
   <body style="opacity: 1; transition: -webkit-transform 0.8s ease;">
+
     <div class='wrapper'>
       <div class='header'>
         <!-- <p>时间好像蛋糕一样，吃着吃着就没了~</p> -->
@@ -145,7 +198,6 @@
         <div class='gift-card first'>
           <img class="card-img" src="../assets/images/gift_selection/kuwan-5.jpg" />
           <div class="card-content">
-          <!-- https://knewone.com/things/tian-sheng-wan-jia-putao-g1-pu-tao-you-xi-ting-zhi-neng-you-xi-shou-bing -->
           <!-- https://knewone.com/things/ib-t200-shou-ji-20-bei-wang-yuan-jing -->
           <!-- https://knewone.com/things/xiao-huang-ren-sha-fa -->
             <a id="my-button">酷玩</a>
@@ -156,6 +208,7 @@
           <!-- https://knewone.com/things/ikair-kong-qi-xiao-nang -->
           <!-- https://knewone.com/things/kao-steam-eye-mask-hua-wang-zheng-qi-yan-zhao -->
           <!-- https://knewone.com/things/emoi-ji-ben-sheng-huo-zhi-neng-qing-gan-yin-xiang-deng -->
+          <!-- https://knewone.com/things/baymax-led-nightlight -->
           <div class="card-content">品质</div>
         </div>
         <div class='gift-card third'>
@@ -178,25 +231,58 @@
         <div class='clear'></div>
       </div>
       <div class='greed'>
-        
       </div>
       <div class="clear"></div>
       <div class='footer'>
       </div>
     </div>
 
+
     <div id="element_to_pop_up" class="popup">
       <span class="botton b-close">
-        <span>X</span>
+        <img class="cupcake" src="../assets/images/gift_selection/cupcake.png">
       </span>
+      <div class="popup-header">
+        <!-- <h3>酷玩</h3> -->
+      </div>
       <div class="content">
         <div class='item'>
-          <div class='image'>
-            <img src="" />
+          <div class='item-img-wrap'>
+            <img class='item-img' src="../assets/images/gift_selection/kw/ri.png" />
           </div>
           <div class='intro'>
-            
+            <h4>高智商酷玩 － 树莓派</h4>
+            <p>相信大名鼎鼎的树莓派不需要我多介绍啦～我记得多年前你的算法就很厉害，对于计算机的内在也很兴趣。</p>
+            <p>所以《酷玩》部分我首推这个高智商玩具，是不是选得很赞？～（快赞我！）</p>
+            <p>当然下班回家累成狗，脑袋空空，“霉霉”实在不感兴趣，那么你还可以看下一个～</p>
           </div>
+          <div class='clear'></div>
+        </div>
+
+        <div class='item'>
+          <div class='intro-right'>
+            <h4>便携式拍照大炮 － 手机 20 倍望远镜</h4>
+            <p>我一直觉得你照相很好看，不是炫技的好，而是用曝光用构图说一个鲜活的故事～</p>
+            <p>是不是把你夸得太好啦～别要害羞😳</p>
+            <p>这个便携的手机镜头，虽然不是“金圈”那种高大上，但是日常中也能用，便携王道。</p>
+          </div>
+          <div class='item-img-wrap-right'>
+            <img class='item-img' src="../assets/images/gift_selection/kw/kw.jpg" />
+          </div>
+          <div class='clear'></div>
+        </div>
+
+        <div class='item'>
+          <div class='item-img-wrap'>
+            <img class='item-img' src="../assets/images/gift_selection/kw/lego-3.jpg" />
+          </div>
+          <div class='intro'>
+           <h4>草鸡磨练耐心的玩物 － 乐高</h4>
+            <p>发现这个的时候，我是拒绝发给你看的。难道不会很有趣吗，全白的乐高，建筑乐高？！！！（抠鼻子。。）</p>
+            <p>我相信你可以搞定它的，我相信。。（又是一个费脑子的东西。。。逃）</p>
+            <p>如果以上都不喜欢（拜托拜托，喜欢一下下呗），可以看下一个礼物卡片～</p>
+          </div>
+          <div class='clear'></div>
         </div>
       </div>
     </div>
@@ -205,6 +291,8 @@
     <script src="../assets/bpopup/jquery.bpopup.min.js"></script>
     <script src="../assets/js/jquery.easing.min.js"></script>
     <script type="text/javascript">
+
+      // card-image slide in and out effects
       $(document).ready(function(){
         $('.gift-card').hover(function(){
           if(!$(this).find('.card-content').hasClass("selected"))
@@ -229,6 +317,7 @@
           })
         })
 
+        // popup window
         // http://dinbror.dk/blog/bPopup/, http://dinbror.dk/bpopup/
         $(function() {
           $('#my-button').bind('click', function(e) {
@@ -242,6 +331,10 @@
             });
           });
         });
+
+        // $('.botton').hover(function() {
+        //   $(this).effect( "shake" );
+        // });
       })
     </script>
   </body>
