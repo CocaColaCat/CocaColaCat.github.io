@@ -1,6 +1,7 @@
   body{
     /*background-color: #ededed;*/
-    background-image: url("/assets/images/gift_selection/bg-7.png");
+    background-image: url("/assets/images/gift_selection/bg-6.png");
+    /*background: url('/assets/images/gift_selection/bg-f.jpg') no-repeat 0 0 fixed;*/
     font: 300 1.0em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
   }
   .wrapper{
@@ -44,6 +45,7 @@
   }
   .fifth{
     background-color: #EE82EE;
+    /*background-image: url('/assets/images/gift_selection/bg-f.jpg');*/
     color: white;
   }
   .sixth{
@@ -79,17 +81,34 @@
     height: 100%;
   }
   .greed{
-    /*background-color:rgba(0,0,0,0.2);*/
-    margin-left: 10px;
-    margin-top: 100px;
-    border-radius: 10px;
+    /*background-image: url('/assets/images/gift_selection/bg-f.jpg');*/
+    /*background-color:rgba(227,204,169,0.3);*/
+    margin-left: 50px;
+    margin-top: 30px;
+    border-radius: 6px;
     /*border: 1px black solid;*/
     width: 500px;
-    height: 500px;
-    float: left;
+    height: 600px;
+    float: left;   
+    overflow: scroll;
+    /*box-shadow: 1px 1px 1px #888888; */
   }
-
-  #element_to_pop_up{
+  .greed .header{
+    width: 500px;
+    height: 3px;
+    background-color: #008B00;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    color: white;
+  }
+  .greed .words{
+    /*background-color:rgba(0,0,0,0.1);*/
+    background-color: white;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    padding: 20px;  
+  }
+  #kuwan, #pinzhi, #wenyi, #chihuo, #choumei{
     display: none;
   }
   .popup{
@@ -113,7 +132,7 @@
   .popup .content{
     max-height: 590px;
     overflow: scroll;
-    margin: 5px
+    margin: 5px;
   }
   a:hover{
     text-decoration: underline;
