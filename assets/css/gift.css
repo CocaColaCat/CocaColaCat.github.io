@@ -108,7 +108,7 @@
     border-bottom-left-radius: 2px;
     padding: 20px;  
   }
-  #kuwan, #pinzhi, #wenyi, #chihuo, #choumei{
+  #kuwan, #pinzhi, #wenyi, #chihuo, #choumei, #qita{
     display: none;
   }
   .popup{
@@ -176,6 +176,9 @@
   .intro-right{
     float: left;
     width: 640px;
+  }
+  .center{
+    padding: 100px 40px 40px 40px;
   }
   h1{
     font-size: 2em;
