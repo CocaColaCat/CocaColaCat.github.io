@@ -46,54 +46,69 @@ class Tree
       end
     end
     next_node
-
-    # if value < node.value
-    #   search(value, node.left)
-    # else
-    #   search(value, node.right)
-    # end
   end
 
-  def minumun
-    return nil if root.nil?
-    return root.value if (root.left == nil) || (root.right == nil)
-    node = root
-    while node && node.left
+  def self.minumun(node)
+    while node.left
       node = node.left
     end
-    node.value
+    node
   end
 
   def maximun
     return nil if root.nil?
-    return root.value if (root.left == nil) || (root.right == nil)
     node = root
     while node && node.right
       node = node.right
     end
-    node.value
+    node
   end
 
   def successor
-
   end
 
   def predecessor
-
   end
 
-  def delete(value)
-
+  def delete(node)
+    return nil if node.nil?
+    if node.left == nil
+      transplant(node, node.right)
+    elsif node.right == nil
+      transplant(node, node.left)
+    else
+      y = Tree.minumun(node.right)
+      if y != node.right
+        transplant(y, y.right)
+        y.right = node.right
+        node.right.parent = y
+      end
+      transplant(node, y)
+      y.left = node.left
+      y.left.parent = y
+    end
   end
 
   private
-
   def walk(node)
     if node != nil
       walk node.left
       p node.value
       walk node.right
     end
+  end
+
+  def transplant(u,v)
+    if u == root
+      root = v
+    else
+      if u == u.parent.left
+        u.parent.left = v
+      else
+        u.parent.right = v
+      end
+    end
+    v.parent = u.parent if v != nil
   end
 
 end
@@ -136,12 +151,25 @@ tree.insert node_11
 tree.insert node_12
 tree.insert node_13
 
-# p tree
+# p node_10.right
 # p tree.root.left
+# p tree
 # tree.inorder_walk
-p tree.minumun
-p tree.maximun
+# p node_2.value
+# p Tree.minumun(node_9)
+p "before delete, tree is:"
+p tree.inorder_walk
+tree.delete node_5
+p "delete #{node_5.value}"
+p "after delete, tree is:"
+p tree.inorder_walk
+# p node_2.left
+# p node_9.left
+# p tree.maximun
 # p tree.root
 # p tree.search 255
 # tree.walk node_4
+
+# tree.delete node_13
+# p tree.inorder_walk
 
