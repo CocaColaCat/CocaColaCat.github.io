@@ -1,22 +1,32 @@
 class Tree
-  attr_accessor :root
+  attr_accessor :root, :count, :deep, :left_deep, :right_deep
 
   def initialize
     @root = nil
+    @count = 0
+    @deep = 0
+    @left_deep = 0
+    @right_deep = 0
   end
 
   def insert(node)
     return nil if (node == nil || node.value == nil)
+    @count += 1
     if (root == nil)
       self.root = node
+      @deep += 1
+      @left_deep += 1
+      @right_deep += 1
       return
     end
     tmp = root
     parent = nil
+    add_to_left = false
     while tmp != nil
       parent = tmp
       if (node.value < tmp.value)
         tmp = tmp.left
+        add_to_left = true
       else
         tmp = tmp.right
       end
@@ -24,13 +34,34 @@ class Tree
     node.parent = parent
     if node.value < parent.value
       parent.left = node
+      if parent.right == nil
+        add_to_left ? (@left_deep+=1) : (@right_deep+=1)
+      end
     else
       parent.right = node
+      if parent.left == nil
+        add_to_left ? (@left_deep+=1) : (@right_deep+=1)
+      end
+    end
+  end
+
+  def tree_deep
+    if @left_deep >= @right_deep
+      return @deep if @left_deep == 0
+      @left_deep
+    else
+      @right_deep
     end
   end
 
   def inorder_walk
-    walk root
+    deep = 0
+    walk root, deep
+  end
+
+  def print
+    deep =
+    left_walk root, deep
   end
 
   def search(value,start_from=nil)
@@ -72,12 +103,15 @@ class Tree
 
   def delete(node)
     return nil if node.nil?
+    p node.left.value
+    p node.right.value
     if node.left == nil
       transplant(node, node.right)
     elsif node.right == nil
       transplant(node, node.left)
     else
       y = Tree.minumun(node.right)
+      p y
       if y != node.right
         transplant(y, y.right)
         y.right = node.right
@@ -90,11 +124,22 @@ class Tree
   end
 
   private
-  def walk(node)
+  def walk(node, deep)
     if node != nil
-      walk node.left
-      p node.value
-      walk node.right
+      walk node.left, deep+1
+      p "deep is #{deep}"
+      p "#{node.value}"
+      walk node.right, deep+1
+    end
+  end
+
+  def left_walk(node,deep)
+    if node != nil
+      space = ""
+      deep.times{ space += " " }
+      p "#{space}#{node.value}"
+      left_walk node.left, deep-1
+      left_walk node.right, deep-1
     end
   end
 
@@ -137,19 +182,22 @@ node_12 = Node.new(255)
 node_13 = Node.new(-29)
 
 tree = Tree.new
-tree.insert node_5
 tree.insert node_1
-tree.insert node_4
 tree.insert node_2
-tree.insert node_3
-tree.insert node_6
-tree.insert node_7
-tree.insert node_8
-tree.insert node_9
-tree.insert node_10
-tree.insert node_11
-tree.insert node_12
-tree.insert node_13
+# tree.insert node_3
+# tree.insert node_4
+# tree.insert node_5
+# tree.insert node_6
+# tree.insert node_7
+# tree.insert node_8
+# tree.insert node_9
+# tree.insert node_10
+# tree.insert node_11
+# tree.insert node_12
+# tree.insert node_13
+
+p tree.count
+p tree.tree_deep
 
 # p node_10.right
 # p tree.root.left
@@ -157,12 +205,13 @@ tree.insert node_13
 # tree.inorder_walk
 # p node_2.value
 # p Tree.minumun(node_9)
-p "before delete, tree is:"
-p tree.inorder_walk
-tree.delete node_5
-p "delete #{node_5.value}"
-p "after delete, tree is:"
-p tree.inorder_walk
+# p "before delete, tree is:"
+# tree.inorder_walk
+# tree.leftorder_walk
+# tree.delete node_5
+# p "delete #{node_5.value}"
+# p "after delete, tree is:"
+# p tree.inorder_walk
 # p node_2.left
 # p node_9.left
 # p tree.maximun
