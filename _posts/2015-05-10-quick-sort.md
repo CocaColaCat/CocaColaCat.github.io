@@ -3,7 +3,6 @@ title: 快排
 layout: post
 tag: Algorithm
 level: 入门
-brief: 快排学习笔记和 Ruby 实现
 image_url: "/assets/images/math.png"
 ---
 #{{ page.title }}

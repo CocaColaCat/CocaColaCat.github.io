@@ -55,13 +55,15 @@ class Tree
   end
 
   def inorder_walk
-    deep = 0
-    walk root, deep
+    walk root
   end
 
-  def print
-    deep =
-    left_walk root, deep
+  def print(node)
+    if node != nil
+      print node.left
+      p 
+      print node.right
+    end
   end
 
   def search(value,start_from=nil)
@@ -103,8 +105,6 @@ class Tree
 
   def delete(node)
     return nil if node.nil?
-    p node.left.value
-    p node.right.value
     if node.left == nil
       transplant(node, node.right)
     elsif node.right == nil
@@ -124,12 +124,11 @@ class Tree
   end
 
   private
-  def walk(node, deep)
+  def walk(node)
     if node != nil
-      walk node.left, deep+1
-      p "deep is #{deep}"
-      p "#{node.value}"
-      walk node.right, deep+1
+      walk node.left
+      p node.value
+      walk node.right
     end
   end
 
@@ -167,11 +166,12 @@ class Node
 
 end
 
+node_3 = Node.new(8)
 node_1 = Node.new(3)
 node_2 = Node.new(6)
-node_3 = Node.new(8)
 node_4 = Node.new(30)
 node_5 = Node.new(1)
+
 node_6 = Node.new(30)
 node_7 = Node.new(100)
 node_8 = Node.new(-2)
@@ -182,11 +182,11 @@ node_12 = Node.new(255)
 node_13 = Node.new(-29)
 
 tree = Tree.new
+tree.insert node_3
 tree.insert node_1
 tree.insert node_2
-# tree.insert node_3
-# tree.insert node_4
-# tree.insert node_5
+tree.insert node_4
+tree.insert node_5
 # tree.insert node_6
 # tree.insert node_7
 # tree.insert node_8
@@ -198,11 +198,12 @@ tree.insert node_2
 
 p tree.count
 p tree.tree_deep
+p tree.root
 
 # p node_10.right
 # p tree.root.left
 # p tree
-# tree.inorder_walk
+tree.inorder_walk
 # p node_2.value
 # p Tree.minumun(node_9)
 # p "before delete, tree is:"
