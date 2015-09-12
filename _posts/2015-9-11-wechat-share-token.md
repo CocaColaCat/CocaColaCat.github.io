@@ -47,95 +47,76 @@ class Referral < ActiveRecord::Base
 end
 {% endhighlight %}
 
-下面的代码定义了一个单例模式的 TokenGenerator。通过调用 g_share_token 方法，它可以为某一个用户生成一个 share_token。这个 share_token 含有 "#{user_type}_#{user_id}" 信息，并且使用秘钥签字。
-同时它可以验证和提取给定 share_token 的用户信息。如果验证不通过（token被修改导致无效），则返回 false。
+下面的代码定义了一个单例模式的 TokenGenerator。通过调用 generate_share_token 方法，它可以为某一个用户生成一个 share_token。这个 share_token 含有 "#{user_type}_#{user_id}" 信息，并且使用秘钥签字。
 {% highlight ruby linenos%}
-module Utilities
-    class TokenGenerator
-        include Singleton
+module Utilities::TokenGenerator
+  include Singleton
+  attr_accessor :verifier
+  def initialize
+    @secret_key = Rails.application.secrets.secret_key_base || "any_key"
+    @verifier = ActiveSupport::MessageVerifier.new(@secret_key)
+  end
 
-        attr_accessor :verifier
+  def generate_share_token(user)
+    return "" unless user
+    generate("#{user.class.to_s.downcase}_#{user.id}")
+  end
 
-      def initialize
-        @verifier = ActiveSupport::MessageVerifier.new(secret_key)
-      end
-      
-        def generate(message)
-            Base64.urlsafe_encode64(verifier.generate(message))
-        end
-
-        def g_share_token(user)
-            return "" unless user
-            generate("#{user.class.to_s.downcase}_#{user.id}")
-        end
-
-        def verify(encode_token)
-            begin
-                decode = Base64.urlsafe_decode64(encode_token)
-                verifier.verify decode
-            rescue ActiveSupport::MessageVerifier::InvalidSignature => e
-              false
-            rescue ArgumentError => e
-                false 
-            end
-        end
-
-      def secret_key
-        Rails.application.secrets.secret_key_base || "any_key"
-      end
-    end
+  def generate(message)
+    Base64.urlsafe_encode64(verifier.generate(message))
+  end
 end
 {% endhighlight %}
 
-下面代码演示如何使用 TokenGenerator 生成当前用户的 share_token，同时把这个 token 作为参数传给分享链接。方法写在 ApplicationController 里是因为全部的 controller 都可以调用。最终的分享链接可能是如下：
+同时它可以验证和提取给定 share_token 的用户信息。如验证不通过（token被修改导致无效），则返回 false。
+{% highlight ruby linenos%}
+# token_generator.rb
+def verify(encode_token)
+  begin
+    decode = Base64.urlsafe_decode64(encode_token)
+    verifier.verify decode
+  rescue ActiveSupport::MessageVerifier::InvalidSignature => e
+    false
+  rescue ArgumentError => e
+    false 
+  end
+end
+{% endhighlight %}
+
+最终的分享链接如下：
 >https://yoursite.com?share_token=QkFoSklnNXpkSFZrWlc1MFh6RUdPZ1pGUmc9PS
 0tMDBjMjEzNzMwZmQ5MDA4N2ZkZDZkN2NiYzVkMWIwNDEzNDAyZmNlMw==
 
 {% highlight ruby linenos%}
-class ApplicationController < ActionController::Base
-  
-  # 生成携带推荐人信息的分享链接
-  def share_url
-    share_token = Utilities::TokenGenerator.instance.g_share_token(current_user)
-    share_path(share_token: share_token)
-  end
-
+# 在 ApplicationController 中定义 share_url 需要携带 share_token
+# 生成携带推荐人信息的分享链接
+def share_url
+  share_token = Utilities::TokenGenerator.instance.generate_share_token(current_user)
+  share_path(share_token: share_token)
 end
 {% endhighlight %}
 
-最后就是在创建新用户成功后建立推荐关系。由于在到底创建这一步之前，用户还可能去其他的页面，所以 share_token 被保存在 session 里面，在需要使用的时候去读取就可以了。
+在到达创建这一步之前，用户还可能去其他页面，所以 share_token 会先被保存在 session 里面（此处不展示保存代码）。在创建新用户成功后，调用 set_referral 来建立推荐关系。
 {% highlight ruby linenos%}
-class StudentsController < ApplicationController
-  def create
-    @student = Student.new(create_params)
-    if @student.save
-      set_referral
-      session[:current_user_id] = @student.id
-      session[:current_user_type] = 'student'
-      # 成功的路由跳转
-    else
-        render :new
-    end
-  end
+# 在创建了新用户之后建立推荐关系 #set_referral
 
-  private 
-  def set_referral
-    # 获取 share_token 并验证
-    return unless share_token = session[:share_token]
-    if referee_st = verifier.verify(share_token)
-      # 从验证通过的 share_token 中获取用户信息，并还原推荐人
-      klass, id = referee_st.split('_')[0], referee_st.split('_')[1]
-      referee = klass.classify.safe_constantize.find_by_id(id)
-      # 建立推荐关系
-      Referral.create(referee: referee, referred: @student)
-      # 删除 session 中的 share_token
-      session[:share_token] = nil
-    end
+def set_referral
+  # 获取 share_token 并验证
+  return unless share_token = session[:share_token]
+  if referee_st = verifier.verify(share_token)
+    # 从验证通过的 share_token 中获取用户信息，并还原推荐人
+    klass, id = referee_st.split('_')[0], referee_st.split('_')[1]
+    referee = klass.classify.safe_constantize.find_by_id(id)
+    # 建立推荐关系
+    Referral.create(referee: referee, referred: @student)
+    # 删除 session 中的 share_token
+    session.delete(:share_token)
   end
 end
 {% endhighlight %}
 
-完
+####最后
+遇到需要生成 token 的情景，如激活链接，忘记密码连接等等，都可以使用 MessageVerifier 来解决。
 <br />
 <br />
 <br />
