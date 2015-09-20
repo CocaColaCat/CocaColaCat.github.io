@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)http://localhost:4000/2015/09/20/review-of-algorithms-1.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     
+     <title>Algorithms 复习 一，插入算法</title>
+     <meta name="author" content="JP Joanna">
+     <!-- <meta name="readability-verification" content="QCzSs992GxmRYRKVpPeZ6LE2tS8aYKxsSSQKV8YM"/> -->
+     <link rel="stylesheet" href="./Algorithms 复习 一，插入算法_files/syntax_2.css" type="text/css">
+     <link rel="stylesheet" href="./Algorithms 复习 一，插入算法_files/post.css" type="text/css" media="screen, projection">
+     <link rel="stylesheet" href="./Algorithms 复习 一，插入算法_files/typo.css" type="text/css" media="screen, projection">
+     <!-- <link href="/assets/css/theme.css" rel="stylesheet" type="text/css"> -->
+     <!-- <link rel="stylesheet" href="/assets/css/normalize.css" type="text/css" media="screen, projection" /> -->
+  <style type="text/css"></style></head>
+
+  <body>
+    <div class="posttop">
+      <a class="posttop-logoWrapper" href="http://localhost:4000/">
+        <img class="posttop-logo" src="./Algorithms 复习 一，插入算法_files/math.png">
+      </a>
+    </div>
+
+    <div class="post-content typo">
+      <div class="poster-inner post-layoutSingleColumn">
+        <h1>Algorithms 复习 一，插入算法</h1>
+
+<p>这是算法导论学习的复习日记的第一份。这是一个尝试性的学习日记，所以以下几点保证它能顺利完成：</p>
+
+<ul>
+<li>不强制，一切以兴趣出发</li>
+<li>从有趣开始，从认真结束。每一篇日记，都会本着对自己，对文字，对时间负责任。要么不玩，要玩就认真。</li>
+</ul>
+
+
+<h3>Insertion Sort 原理和实现</h3>
+
+<p>从第二数字开始，和第一个数字对比实现排序。完成这一轮排序，则第二和第一数字按照大小排序。然后到第三个数字，和前面的一，二对比排序。完成这一轮，则前三数字按照大小排序。以此类推，则到最后一个数字完成和前面的数字对比，则排序完成。</p>
+
+<p>Start from the second number, comparing it with the first one. Done and get the first two numbers sorted. Then move to the third number, comparing it with the previous numbers, on by one. Because the previous numbers already in sort, so the current round only need to care about the 'Key' number. For each round complete, there is sorted list numbers.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="lineno"> 1</span> <span class="k">def</span> <span class="nf">insert_sort</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="lineno"> 2</span>   <span class="n">length</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">length</span>
+<span class="lineno"> 3</span>   <span class="k">return</span> <span class="n">inputs</span> <span class="k">if</span> <span class="n">length</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+<span class="lineno"> 4</span>   <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="p">(</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="lineno"> 5</span>     <span class="n">current</span> <span class="o">=</span> <span class="n">i</span>
+<span class="lineno"> 6</span>     <span class="n">key</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">[</span><span class="n">current</span><span class="o">]</span>
+<span class="lineno"> 7</span>     <span class="n">previous</span> <span class="o">=</span> <span class="n">current</span><span class="o">-</span><span class="mi">1</span>
+<span class="lineno"> 8</span>     <span class="k">while</span> <span class="p">(</span><span class="n">previous</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">inputs</span><span class="o">[</span><span class="n">previous</span><span class="o">]</span><span class="p">)</span>
+<span class="lineno"> 9</span>       <span class="n">inputs</span><span class="o">[</span><span class="n">current</span><span class="o">]</span><span class="p">,</span> <span class="n">inputs</span><span class="o">[</span><span class="n">previous</span><span class="o">]</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">[</span><span class="n">previous</span><span class="o">]</span><span class="p">,</span> <span class="n">key</span>   
+<span class="lineno">10</span>       <span class="n">previous</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="lineno">11</span>       <span class="n">current</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="lineno">12</span>     <span class="k">end</span>
+<span class="lineno">13</span>   <span class="k">end</span>
+<span class="lineno">14</span>   <span class="n">inputs</span>
+<span class="lineno">15</span> <span class="k">end</span></code></pre></div>
+
+
+<p><strong>Insertion Sort 分析</strong></p>
+
+<blockquote><p>Analyzing an algorithm has come to mean prediting the resource that the algorithm requires. 分析算法就是分析算法占用资源的情况，如内存（memory), 带宽(communication bandwidth)和硬件。一般关注的重点是计算时间（computational time).</p></blockquote>
+
+<p>Running time 就是算法运行的步数。对算法中的每一行代码的运行次数，计算总和，就是算法的运行时间。运行时间一般有最好情况，最坏情况和平均情况。算法分析的时候一般关注最坏情况，因为：
+- 知道最快情况就等于知道最慢的运行时间，不会比这个更差。因此不需要再做无谓的猜测。
+- 达到最坏运行时间是普遍情况。</p>
+
+<p><strong>Rate of Growth（运行时间的增长率）</strong></p>
+
+<p>插入算法的最坏情况是 Θ(n<sup>2</sup>) “theta of n-squared”</p>
+
+      </div>
+    
+
+    <!-- <div class="post-footer post-layoutSingleColumn "> -->
+      <!-- <a href="/">回首页</a> -->
+    <!-- </div> -->
+  <script src="./Algorithms 复习 一，插入算法_files/jquery-2.1.4.min.js"></script>
+  <script src="./Algorithms 复习 一，插入算法_files/jquery.bpopup.min.js"></script>
+  
+  <script>
+    ;(function($) {
+         // DOM Ready
+        $(function() {
+            // Binding a click event
+            // From jQuery v.1.7.0 use .on() instead of .bind()
+            $('#my-button').bind('click', function(e) {
+                // Prevents the default action to be triggered. 
+                e.preventDefault();
+                // Triggering bPopup when click event is fired
+                $('#element_to_pop_up').bPopup();
+            });
+        });
+    })(jQuery);
+  </script>
+  
+
+</div></body></html>

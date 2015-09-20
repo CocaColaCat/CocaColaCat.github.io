@@ -58,12 +58,9 @@ class Tree
     walk root
   end
 
-  def print(node)
-    if node != nil
-      print node.left
-      p 
-      print node.right
-    end
+  def print
+    node = root
+    _print node
   end
 
   def search(value,start_from=nil)
@@ -155,6 +152,37 @@ class Tree
     v.parent = u.parent if v != nil
   end
 
+  def _print(node)
+    stack_with_parent = []
+    stack = []
+    deep = 0
+    stackup stack,node,deep
+    deep = stack.count
+    p stack
+    p deep
+    # stack.each{|i| p i}
+    stack.each_with_index do |l, index|
+      if l.uniq[0] != nil
+        count = deep-index
+        space = count.times.inject(""){ |r| r+=".";r }
+        puts space+l.join(' ')
+        if stack[index+1].uniq[0] != nil
+          # puts space[0..-2]+l.count.times.inject(""){ |r| r+="/ "+"\\ ";r }
+        end
+      end
+    end
+  end
+
+  def stackup(stack,node,deep)
+    stack[deep] || (stack[deep] = [])
+    # stack[deep] << (node ? [(node.parent ? node.parent.value : nil), node.value] : nil)
+    stack[deep] << (node ? node.value : nil)
+    if node != nil
+      stackup(stack,node.left, deep+1) 
+      stackup(stack,node.right, deep+1)
+    end
+  end
+
 end
 
 class Node
@@ -184,26 +212,26 @@ node_13 = Node.new(-29)
 tree = Tree.new
 tree.insert node_3
 tree.insert node_1
-tree.insert node_2
 tree.insert node_4
+tree.insert node_2
 tree.insert node_5
-# tree.insert node_6
-# tree.insert node_7
-# tree.insert node_8
-# tree.insert node_9
-# tree.insert node_10
-# tree.insert node_11
-# tree.insert node_12
-# tree.insert node_13
+tree.insert node_6
+tree.insert node_7
+tree.insert node_8
+tree.insert node_9
+tree.insert node_10
+tree.insert node_11
+tree.insert node_12
+tree.insert node_13
 
-p tree.count
-p tree.tree_deep
-p tree.root
-
+# p tree.count
+# p tree.tree_deep
+# p tree.root
+tree.print 
 # p node_10.right
 # p tree.root.left
 # p tree
-tree.inorder_walk
+# tree.inorder_walk
 # p node_2.value
 # p Tree.minumun(node_9)
 # p "before delete, tree is:"
@@ -222,4 +250,7 @@ tree.inorder_walk
 
 # tree.delete node_13
 # p tree.inorder_walk
+
+# http://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram
+# http://codegolf.stackexchange.com/questions/849/print-a-binary-tree
 

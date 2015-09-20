@@ -1,0 +1,50 @@
+
+.posttop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.posttop-logoWrapper {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+img.posttop-logo {
+  max-height: 36px;
+}
+
+.posttop-logo {
+  margin: 14px 0;
+}
+
+.post-content {
+  padding-top: 60px;
+}
+
+.post-layoutSingleColumn {
+  width: 800px;
+  margin: 0 auto;
+}
+
+h1, h2, h3{
+	text-align: center;
+}
+
+.post-footer{
+	margin-top: 30px;
+	margin-bottom: 50px;
+	text-align: right;
+}
+
+#element_to_pop_up { 
+  background-color: white;
+  margin-top: 20px
+  width: 600px;
+  display:none; 
+}
+
+#my-button{
+  
+}
