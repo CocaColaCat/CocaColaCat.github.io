@@ -57,11 +57,13 @@ image_url: "/assets/images/yue.jpeg"
 <br />
 <br />
 <br />
+最后，是我很喜欢的一个诗人。她的诗犀利，好似有距离，但是细读却是温暖和幽默的。
+
 >为何，我们以这么多不必要的恐惧与忧伤，对待飞逝的时光？
 日子不会驻留，这是它的天性：今天一再逝去，成为明天。
 ——辛波丝卡 《任何事情都不可能发生两次》
 
-Happy B-Day, the girl in my heart~
+还有，祝我自己生日快乐～Happy B-Day, the girl in my heart~
 <br />
 <br />
 <br />
