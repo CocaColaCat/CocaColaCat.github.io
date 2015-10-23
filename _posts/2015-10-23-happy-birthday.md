@@ -19,12 +19,12 @@ image_url: "/assets/images/yue.jpeg"
     </div>
 </div>
 
-中午收到快递的电话，说是一个音乐盒，从深圳来的。我知道是她，我在英国的好‘真理’。有时候觉得分别就是昨天，好难过；有时候又觉得还在念书时光，好开心；大多时候，我们各奔东西，却只是惆怅。今年，也算是圆了自己一个心愿，为她送上了一份[祝福](http://cocacolacat.github.io/static/gift_selection.html)。
+中午收到快递的电话，说是一个音乐盒，从深圳来的。我知道是她，我在英国的好真理。有时候觉得分别就是昨天，好难过；有时候又觉得还在念书时光，好开心；大多时候，我们各奔东西，却只是惆怅。今年，也算是圆了自己一个心愿，为她送上了一份[祝福](http://cocacolacat.github.io/static/gift_selection.html)。
 
 <div style="max-width: 200px; max-height: 388px;margin: 0px auto 0px auto; border-radius: 2px">
     <img class="graf-image" src="{{ site.url }}/assets/images/me_and_zl.png">
     <div>
-        <p style="font-size: 9px;text-align: center;text-decoration: underline;color: grey">初秋和深圳见面，一点没‘变’的‘真理’</p>
+        <p style="font-size: 9px;text-align: center;text-decoration: underline;color: grey">初秋和深圳见面，一点没‘变’的真理</p>
     </div>
 </div>
 
