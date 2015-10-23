@@ -24,7 +24,7 @@ image_url: "/assets/images/yue.jpeg"
 <div style="max-width: 200px; max-height: 388px;margin: 0px auto 0px auto; border-radius: 2px">
     <img class="graf-image" src="{{ site.url }}/assets/images/me_and_zl.png">
     <div>
-        <p style="font-size: 9px;text-align: center;text-decoration: underline;color: grey">初秋和深圳见面，一点没变‘胖’的‘真理’</p>
+        <p style="font-size: 9px;text-align: center;text-decoration: underline;color: grey">初秋和深圳见面，一点没‘变’的‘真理’</p>
     </div>
 </div>
 
