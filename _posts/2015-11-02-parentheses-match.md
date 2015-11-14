@@ -6,7 +6,7 @@ level: 入门
 brief: 给定一个只有括号的字符串，判断这个字符串是不是闭合的。
 image_url: "/assets/images/math.png"
 ---
-#{{ page.title }}
+<!-- #{{ page.title }} -->
 
 给定仅有括号的字符串，如：
 >( { } ) [ ( ) ] 
@@ -78,12 +78,7 @@ void verify(char *str){
 };
 
 int main(){
-  char str[] = "()(){}((({{[]";
+  char str[] = "()(){}((({\{[]";
   verify(str);
 }
 {% endhighlight %}
-
-<br />
-<br />
-<br />
-<br />

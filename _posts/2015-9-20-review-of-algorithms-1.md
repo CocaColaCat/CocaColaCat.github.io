@@ -1,5 +1,5 @@
 ---
-title: Algorithms 复习－插入算法
+title: 插入算法
 layout: post
 tag: Algorithm
 level: 入门

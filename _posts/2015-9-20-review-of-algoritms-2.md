@@ -1,5 +1,5 @@
 ---
-title: Algorithms 复习－merge sort
+title: Merge Sort
 layout: post
 tag: Algorithm
 level: 入门
