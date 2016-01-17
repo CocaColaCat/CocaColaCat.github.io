@@ -39,4 +39,6 @@ ruby 里面的 AST (abstract structure tree)
 * ruby [implementation](http://alexyoung.org/2009/04/09/lets-make-a-game-snake/)
 * 其他 [1](http://www.rubydoc.info/gems/ruby_snake/0.1.1)，其他 [2](http://www.artificialworlds.net/presentations/snake-ruby/snake-ruby.html)，其他 [3](http://codeincomplete.com/posts/2011/8/5/starting_snakes/)，其他 [4](https://gamedev.stackexchange.com/questions/33786/snake-game-logic)，其他 [5](https://www.youtube.com/watch?v=FABTl1Q1byw)
 
+https://www.quora.com/How-do-I-start-learning-or-strengthen-my-knowledge-of-data-structures-and-algorithms#
+
 
