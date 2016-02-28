@@ -178,15 +178,15 @@ mark {
 /* 代码片断 */
 pre, code, pre tt {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 14px; 
+  font-size: 12px; 
   line-height: 1.4;
 }
 
 pre {
-  background: #fcfcfc;
-  border: 1px solid #ddd;
+  background: #F5F5F5;
+  /*border: 1px solid #ddd;*/
   border-radius: 4px;
-  padding: 0.5em 0.1em;
+  /*padding: 0.5em 0.1em;*/
   display: block;
   -webkit-overflow-scrolling: touch;
 }

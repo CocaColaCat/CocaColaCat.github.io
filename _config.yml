@@ -1,5 +1,3 @@
 encoding: utf-8
 gems: [jekyll-paginate, jekyll-gist]
-markdown: rdiscount
-highlighter: pygments
 paginate: 3

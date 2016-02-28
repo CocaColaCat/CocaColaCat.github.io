@@ -67,9 +67,9 @@
 }
 
 .highlight pre code { 
-	display: block; 
+/*	display: block; 
 	white-space: pre; 
 	overflow-x: auto; 
-	word-wrap: normal; 
+	word-wrap: normal; */
 	/*max-height: 600px*/
 }

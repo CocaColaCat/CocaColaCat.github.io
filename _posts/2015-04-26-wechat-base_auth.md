@@ -58,7 +58,6 @@ image_url: "/assets/images/wechat.jpg"
 
 以下是客户端的代码。假设用户请求项目列表 （需要授权），run block 会被触发，检测本地是否有授权令牌。
 
-<!-- {% gist CocaColaCat/d76ab10a4ebf08782a99 %} -->
 {% highlight js linenos %}
 angular.module('app',[])
 .config([, function(){
@@ -159,7 +158,6 @@ angular.module('app.account')
   });
 }])
 {% endhighlight %}
-<!-- {% gist CocaColaCat/144ad175c3ce45d40b4f %} -->
 
 以下是 AuthToken.get_wechat_token 的处理代码。 angular 想后台发异步请求，返回 promise。
 {% highlight js linenos %}
@@ -185,7 +183,6 @@ angular.module('app.resource')
     return AuthToken;
 }]);
 {% endhighlight %}
-<!-- {% gist CocaColaCat/a605bc9c6228031a156f %} -->
 
 后台又是如何实现的呢？相比前端代码，后台代码逻辑要简单多。
 {% highlight ruby linenos %}
@@ -263,4 +260,3 @@ module App
         end
     end
 {% endhighlight %}
-<!-- {% gist CocaColaCat/190eb432cf8a2e536c96 %} -->

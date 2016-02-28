@@ -110,8 +110,7 @@ void dfs(Graph* graph, int pivot, bool* marked, int* edgeTo,
 **再看实现**
 
 其实以上的实现会把图中所有的圈都找出来。但如果希望检测到圈就停止，该怎么办？
-
-<未完待续>
+<未完>
 <br />
 <br />
 <br />
