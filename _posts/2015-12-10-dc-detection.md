@@ -108,7 +108,10 @@ void dfs(Graph* graph, int pivot, bool* marked, int* edgeTo,
 </div>
 
 **再看实现**
-其实以上的实现会把图中所有的圈都找出来。但如果希望检测到圈就停止，该怎么办？实现在关键在于变量 Stack* cycle 的 scope。按照以上的实现，cycle 的 scope 是在 
+
+其实以上的实现会把图中所有的圈都找出来。但如果希望检测到圈就停止，该怎么办？
+
+<未完待续>
 <br />
 <br />
 <br />
