@@ -1,19 +1,20 @@
-body {
-  /*font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;*/
-  /*font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;*/
-  /*font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;*/
-  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
-  
-  letter-spacing: -0.02em;
+@font-face {
+  font-family: 'RobotoDraft';
+  font-style: normal;
   font-weight: 400;
+  src: local('RobotoDraft'), local('RobotoDraft-Regular'), local('RobotoDraft'), font-url('../fonts/RobotoDraftRegular.woff2') format('woff2'), font-url('../fonts/RobotoDraftRegular.woff') format('woff');
+}
+
+body {
+  font-family: RobotoDraft, Microsoft Yahei, Microsoft Sans Serif, sans;
+  letter-spacing: -0.02em;
   font-style: normal;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga" on;
-  color: rgba(0,0,0,0.8);
-  font-size: 18px;
-  line-height: 1.4;
+  color: #222527;
+  /*color: rgba(0,0,0,0.9);*/
   margin: 0px;
 }
 
@@ -22,9 +23,7 @@ h1, h2, h3, h4, h5, h6, dl, dd, ol, ul, menu, figure, blockquote, p, pre, form {
 }
 
 p{
-  font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
-  /*font-size: 18px;*/
-  /*line-height: 1.5em;*/
+  font: 300 1em/1.8 RobotoDraft, Microsoft Yahei, Microsoft Sans Serif, sans;
 }
 
 a {
@@ -53,11 +52,10 @@ ul {
   display: block;
   z-index: 500;
   width: 100%;
-  font-size: 14px;
+  font-size: 24px;
   background: #fff;
   color: rgba(0,0,0,0.3);
-  font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;
-
+  /*font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;*/
   /*font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;*/
   letter-spacing: -0.02em;
   font-weight: 400;
@@ -286,7 +284,7 @@ img {
 
 .postMetaInline {
   /*font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;*/
-  font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;
+  /*font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;*/
 
   letter-spacing: -0.02em;
   font-weight: 400;
@@ -374,7 +372,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .postContent {
-  font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;
+  /*font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;*/
   letter-spacing: .01rem;
   font-weight: 400;
   font-style: normal;
@@ -436,8 +434,7 @@ hr.section-divider {
 }
 
 .graf--h3 {
-  font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;
-
+  /*font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;*/
   /*font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;*/
   font-weight: 100;
   color: #000;
@@ -460,8 +457,7 @@ body.is-withMagicUnderlines .postArticle--short .markup--anchor {
 
 .postMeta-previewFooter, .postMeta-previewFooter .button, .postMeta-previewFooter .label {
   font-size: 13px;
-  font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;
-
+  /*font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;*/
   /*font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;*/
   font-weight: 400;
   font-style: normal;

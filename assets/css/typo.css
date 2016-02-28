@@ -1,7 +1,14 @@
 @charset "utf-8";
 
-/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+@font-face {
+  font-family: 'RobotoDraft';
+  font-style: normal;
+  font-weight: 400;
+  src: local('RobotoDraft'), local('RobotoDraft-Regular'), local('Roboto-Regular'), font-url('../fonts/RobotoDraftRegular.woff2') format('woff2'), font-url('../fonts/RobotoDraftRegular.woff') format('woff');
+}
+
 html {
+  font-family: RobotoDraft, Microsoft Yahei, Microsoft Sans Serif, sans;
   color: #333;
   background: #fff;
   -webkit-text-size-adjust: 100%;
@@ -34,7 +41,9 @@ audio, canvas, video {
 
 /* 要注意表单元素并不继承父级 font 的问题 */
 body, button, input, select, textarea {
-  font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+  color: #222527;
+  font-size: 14px;
+  line-height: 1.5em;
 }
 
 button::-moz-focus-inner,
@@ -243,9 +252,6 @@ strong, b {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Segoe UI","Lucida Grande",Helvetica,Arial,"Microsoft YaHei",FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;
-
-  /*font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;*/
   font-weight: 100;
   color: #000;
   line-height: 1.35;
