@@ -16,5 +16,5 @@ theme_image: "/assets/images/theme_hello.jpg"
 
 带上勇气，带上追求，面朝希望，春暖花开
 
-You will do better
+但行好事，莫问前程
 
