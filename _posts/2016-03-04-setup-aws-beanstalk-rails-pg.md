@@ -11,7 +11,7 @@ image_url: "/assets/images/aws.jpg"
 
 **初步迁徙计划**
 
-这是一个 SAAS 的项目，除了基本的 rails 逻辑和数据库（pg），还要用到 WebSocket，redis 和 Sidekiq。目前所有的业务逻辑，数据库和服务都是单机跑通，一旦有什么 bug 或大访问，只要系统当机那么面相用户的服务也就断了。在产品快速建模实验市场反应的时候，这样做问题不大。但不能不防患未然。所以想到了把此项目迁徙到 AWS 上。既然是用了 AWS 的服务，那么就应该利用它的 elastic 的优势，把项目生产环境配置成为 scalable 的。那么就要解决以下的问题：
+这是一个 SaaS 的项目，除了基本的 rails 逻辑和数据库（pg），还要用到 WebSocket，redis 和 Sidekiq。目前所有的业务逻辑，数据库和服务都是单机跑通，一旦有什么 bug 或大访问，只要系统当机那么面向用户的服务也就断了。在产品快速建模试验市场反应的时候，这样做问题不大。但不能不防患于未然。所以想到了把此项目迁徙到 AWS 上。既然是用 AWS 的服务，那么就应该利用它的 elastic 的优势，把项目生产环境配置成为 scalable 的。那么就要解决以下的问题：
 
 - 用什么来跑业务逻辑？
 - 用什么来 host 数据库？
@@ -19,7 +19,7 @@ image_url: "/assets/images/aws.jpg"
 - WebSocket 如何布置和启动？
 - sidekiq 如何布置和启动？
 
-初步阅读了 AWS 文档和看了网上视频后，发现 AWS 有专门针对 Rails 项目的架构服务，一个是 [Beanstalk](https://aws.amazon.com/documentation/elastic-beanstalk/)，一个是 OpsWork。但是后者在中国区不提供服务，所以我打算尝试前者。那么初步的架构设计如下：
+初步阅读了 AWS 文档和看了网上视频后，发现 AWS 有专门针对 Rails 项目的架构服务，一个是 [Beanstalk](https://aws.amazon.com/documentation/elastic-beanstalk/)，一个是 OpsWork。但后者不在中国区提供服务，所以我打算尝试前者。初步的架构设计如下：
 
 - 采用 Beanstalk 的服务，用 EC2 来 host Web Server/App Server
 - 采用 RDS postgresql 做数据库服务器
@@ -54,7 +54,7 @@ image_url: "/assets/images/aws.jpg"
   <img style="width:700px" class="graf-image" src="{{ site.url }}/assets/images/aws_instance_profile.png">
 </div>
 
-然后选择 "roles" -> "create new roles"。在第一步中定义 role 的名字，然后进入第二部如下图。在这里给 profile 访问 EC2 的权限，选择 EC2 项目。
+然后选择 "roles" -> "create new roles"。在第一步中定义 role 的名字，然后进入第二步如下图。在这里给 profile 访问 EC2 的权限，选择 EC2 项目。
 <div>
   <img style="width:750px" class="graf-image" src="{{ site.url }}/assets/images/iam_step_2.png">
 </div>
@@ -65,7 +65,7 @@ image_url: "/assets/images/aws.jpg"
   <img style="width:750px" class="graf-image" src="{{ site.url }}/assets/images/iam_step_3.png">
 </div>
 
-下面就是创建 beanstalk instance。在 console 页面上面找到进入 Elastic Beanstalk 的入口，然后选择 "Create New Application"。然后步骤如下：
+下面就是创建 beanstalk instance。在 console 页面上找到进入 Elastic Beanstalk 的入口，然后选择 "Create New Application"。步骤如下：
 
 - 输入 app 的名字，下一步
 - 选择 Web Server Environment -> "Create web server"，下一步
@@ -76,7 +76,7 @@ image_url: "/assets/images/aws.jpg"
 - 到 "Permissions" 在 instance profile 选择之前创建好的 profile 名字，在 service role 选项下选择新建，安装页面的指示新建 role
 - Review 配置，完成创建
 
-如果顺利 AWS 应该会在几分钟内把 EC2，auto scaling service，load balancer 和 RDS 搭建好。可以在 Beanstalk 的主页面上面看到新建的项目，在项目的 Dashboard 查看安装情况。同时在 Configuration 可以看到已经安装的服务，以下是我创建后看到的页面，点击进去可以看到某项服务的详细配置。
+如果顺利 AWS 会在几分钟内把 EC2，auto scaling service，load balancer 和 RDS 搭建好。可以在 Beanstalk 的主页面上面看到新建的项目，在项目的 Dashboard 查看安装情况。同时在 Configuration 可以看到已经安装的服务，以下是我创建后看到的页面，点击进去可以看到某项服务的详细配置。
 
 <div>
   <img style="width:750px" class="graf-image" src="{{ site.url }}/assets/images/beanstalk_dashboard.png">
@@ -93,7 +93,7 @@ image_url: "/assets/images/aws.jpg"
 !.elasticbeanstalk/*.global.yml
 ```
 
-作为 DevOp，ssh 到服务器是有需要的。Beanstalk 是默认禁用 EC2 的 ssh 机制的。所以需要运行 
+作为 DevOp，ssh 到服务器是有需要的。Beanstalk 默认禁用 EC2 的 ssh 访问。需要运行 
 
 ```code
 eb setup --ssh
