@@ -231,14 +231,14 @@ Redis 的 endpoint 藏得很隐蔽（估计也不希望人为去访问服务）�
 
 **其他**
 
-其事整个迁徙过程很不顺利，一是自己不熟悉 AWS 的服务和环境，二是 AWS 入中国后一些服务受到限制，文档不齐全等，算是摸黑完成了这个过程。这个文章远不算不上完整和正确，因为文中我采用的解决方案很可能是错误的，只是一种 Walk Around。
+整个迁徙过程很不顺利，一是自己不熟悉 AWS 的服务和环境，二是 AWS 入中国后一些服务受到限制，文档不齐全，算是摸黑完成了这个过程。这个文章远不算不上完整和正确，因为文中采用的解决方案并不是最佳实践的，只是一种 Walk Around。
 
 除了文中提到的文档和资源，还有其他的参考文献如下：
 
 - [如何使用 Files 命令来启动 Sidekiq，日文，代码肯定是能看懂的](http://qiita.com/sawanoboly/items/d28a05d3445901cf1b25)
 - [AWS Beanstalk + Rails 的教学贴，帮助很大](https://medium.com/@jatescher/how-to-set-up-a-rails-4-1-app-on-aws-with-elastic-beanstalk-and-postgresql-66d4e3412629#.ksv744qan)
 
-**还有一点，由于某种不可抗原因，AWS 80，8080 端口在中国区是默认不可用的，需要联系客服把自己的网站设置为 Exception。**
+**还有一点，AWS 80，8080 端口在中国区是默认不可用的，需要联系客服把自己的网站设置为 Exception。这里花费了不少时间，一直以为是网络配置错误。**
 
 
 <br />
