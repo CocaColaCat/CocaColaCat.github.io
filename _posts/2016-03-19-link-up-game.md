@@ -3,7 +3,7 @@ title: JS 小游戏之连连看
 layout: post
 tag: [Game,JavaScript]
 level: 中级
-brief: 最近在看《编程之美》，里面第一章就是游戏之乐，介绍了如何实现连连看这个游戏的原理。原来这游戏核心算法是图最短路径算法。正好就拿这个游戏来练练手，复习下相关算法吧。
+brief: 最近在看《编程之美》，第一章的游戏之乐就提到了《连连看》的实现原理，关键在于用到了最短路径算法，正好用 js 实现一个简陋版复习下图算法。
 image_url: "/assets/images/game.jpg"
 ---
 {{ page.title }}
@@ -87,7 +87,7 @@ nodePerColumn = 11;
 function initGrid(){
     lines = new Array(); // 初始化数组
     for(var i=0;i<nodePerColumn;i++){ // 每列 11 个格子
-        lines[i] = new Array(); 
+        lines[i] = new Array();
         var x,y,left,right,up,down,isBlank,color;
           for(var j=0;j<nodePerRow;j++){ // 每行 15 个格子
             x = j*nodeWidth;
@@ -104,7 +104,7 @@ function initGrid(){
             lines[i].push(node);
           }
         }
-    } 
+    }
 }
 {% endhighlight %}
 
@@ -260,16 +260,16 @@ function isMatch(){
 
 
 **处理“死锁”问题**
- 
-TBC
+
+当剩余的有色格子数目小于等于颜色集合数时，进行“死锁”检测。如果剩余的格子都不可以配对了，则对剩余格子重新着色。以上操作成立的前提是全部有色格子总数必须是偶数。
 
 **小总结**
 
-全部的代码在 [linkup](https://github.com/CocaColaCat/algorithms/blob/master/src/games/link_up/link_up.html)。本着练习算法的目的来实现这个小游戏，基本完成任务。核心在于深度优先算法，根据这个为切入，整个解决方案就不会跑偏了。
+全部的代码在 [linkup](https://github.com/CocaColaCat/algorithms/blob/master/src/games/link_up/link_up.html)，点击 [demo](http://cocacolacat.github.io/static/linkup.html) 可以试玩。本着练习算法的目的来实现这个小游戏，基本完成任务。核心在于深度优先算法，根据这个为切入，整个解决方案就不会跑偏了。
 
-游戏的实现和写博客延续了好多天，中间又碰上换工作和搬家，context switch 不过来，“死锁”问题就先搁置了，等有时间再来搞定。如果换一套样式（设定主题）应该会更有趣的，不过那是做精细的问题。
+但在实现的时候竟然用了 window.requestAnimationFrame 这样的方法，其实完全没有必要。当时的初衷是自动触发游戏板的重绘，分数的更新。其实这些操作应该在用户点击格子后触发。最终的实现改过来了，但是那些分步的代码没有修改，也不花时间修正了，特此说明。
+
 
 <br />
 <br />
 <br />
-
