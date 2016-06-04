@@ -264,7 +264,7 @@
         }
       }
 
-      function bfs(queue,visit,pathTo){
+      function bfs(){
         if(found){
           return;
         }
@@ -296,7 +296,8 @@
             }
           }
         }
-        bfs(queue,visit,pathTo);
+        console.log('recusive call bfs');
+        bfs();
       }
 
       function hasPathTo(){
@@ -308,7 +309,7 @@
         queue = new buckets.Queue();
         crossCount[encodeToIndex(srcNode)] = 0;
         queue.add(srcNode);
-        bfs(queue,visit,pathTo);
+        bfs();
       }
 
       function isMatch(){
